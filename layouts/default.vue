@@ -9,7 +9,7 @@
       </div>
       <div class="drawer-side">
         <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-        <ul class="menu p-4 w-64 min-h-full backdrop-blur-md bg-white/75  text-base-content font-bold">
+        <ul class="menu p-4 w-64 min-h-full backdrop-blur-xl bg-white/15 border-r border-white/25 text-white font-bold">
           <li><NuxtLink to="/"><img src="/icons/home.png" alt="Home" class="w-6">Home</NuxtLink></li>
           <li><NuxtLink to="/advices"><img src="/icons/info.png" alt="Advices" class="w-6">Advices</NuxtLink></li>
           <li><NuxtLink to="/learning"><img src="/icons/book.png" alt="Learning" class="w-6">Learning</NuxtLink></li>
@@ -25,6 +25,13 @@
 <style scoped>
 .drawer-side {
   z-index: 2;
+}
+.menu img {
+  @apply invert;
+}
+
+a {
+  @apply hover:text-white hover:bg-black/60 p-2
 }
 </style>
 <script setup lang="ts">
