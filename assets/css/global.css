@@ -1,35 +1,48 @@
 :root {
-    --default-font: BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+  --default-font: BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
 }
 
-h1, h2, h3, h4, h5, h6, p, span, a, li, label, input, button, textarea {
-    font-family: "Gabarito", "Anuphan", var(--default-font);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+li,
+label,
+input,
+button,
+textarea {
+  font-family: "Gabarito", "Anuphan", var(--default-font);
 }
 
 .icon {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 .page-layouts {
-    margin-left: 12px;
-    margin-right: 12px;
-    animation: popUpSlideToTopFadeIn .75s ease-in-out;
+  margin-left: 12px;
+  margin-right: 12px;
+  animation: popUpSlideToTopFadeIn 0.75s ease-in-out;
 }
 
 .page-container {
-    @apply flex flex-col gap-16;
+  @apply flex flex-col gap-16;
 }
 
 @keyframes popUpSlideToTopFadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

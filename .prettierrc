@@ -6,7 +6,5 @@
   "tabWidth": 2,
   "endOfLine": "crlf",
   "bracketSpacing": true,
-  "plugins": [
-    "prettier-plugin-tailwind"
-  ]
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

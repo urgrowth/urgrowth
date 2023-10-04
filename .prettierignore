@@ -1,0 +1,3 @@
+*.config.*
+.*
+pnpm-lock.yaml

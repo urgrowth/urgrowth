@@ -5,74 +5,79 @@
       <div class="title-container">
         <div class="text-wrapper">
           <h1>
-            {{ $t('home.banner.title') }}
+            {{ $t("home.banner.title") }}
           </h1>
           <h1>
-            <span class="highlight">{{ $t('home.banner.subtitle') }}</span>
+            <span class="highlight">{{ $t("home.banner.subtitle") }}</span>
             <span class="sub">LET'S URGROWTH WEIGH UP YOUR IDEAS</span>
           </h1>
         </div>
         <button class="btn btn-warning w-80">
-          {{ $t('home.banner.button') }}
+          {{ $t("home.banner.button") }}
         </button>
       </div>
-      <img class="banner1" src="/images/banner1.svg" alt="Thinking" width="512">
+      <img
+        class="banner1"
+        src="/images/banner1.svg"
+        alt="Thinking"
+        width="512"
+      />
     </div>
 
     <!-- Features -->
     <div class="features-container">
       <div class="feature">
-        <img class="icon" src="/icons/info.png" alt="icon">
-        <p>{{ $t('home.features[0]')}}</p>
+        <img class="icon" src="/icons/info.png" alt="icon" />
+        <p>{{ $t("home.features[0]") }}</p>
       </div>
       <div class="feature">
-        <img class="icon" src="/icons/book.png" alt="icon">
-        <p>{{ $t('home.features[1]')}}</p>
+        <img class="icon" src="/icons/book.png" alt="icon" />
+        <p>{{ $t("home.features[1]") }}</p>
       </div>
       <div class="feature">
-        <img class="icon" src="/icons/target.png" alt="icon">
-        <p>{{ $t('home.features[2]')}}</p>
+        <img class="icon" src="/icons/target.png" alt="icon" />
+        <p>{{ $t("home.features[2]") }}</p>
       </div>
       <div class="feature">
-        <img class="icon" src="/icons/discuss.png" alt="icon">
-        <p>{{ $t('home.features[3]')}}</p>
+        <img class="icon" src="/icons/discuss.png" alt="icon" />
+        <p>{{ $t("home.features[3]") }}</p>
       </div>
       <div class="feature">
-        <img class="icon" src="/icons/community.png" alt="icon">
-        <p>{{ $t('home.features[4]')}}</p>
+        <img class="icon" src="/icons/community.png" alt="icon" />
+        <p>{{ $t("home.features[4]") }}</p>
       </div>
       <div class="feature">
-        <img class="icon" src="/icons/grow.png" alt="icon">
-        <p>{{ $t('home.features[5]')}}</p>
+        <img class="icon" src="/icons/grow.png" alt="icon" />
+        <p>{{ $t("home.features[5]") }}</p>
       </div>
     </div>
 
     <!-- Why us? -->
     <div class="pro-container">
       <div class="text-wrapper">
-        <h1>{{ $t('home.pro.title') }}</h1>
-        <p>{{ $t('home.pro.subtitle') }}</p>
+        <h1>{{ $t("home.pro.title") }}</h1>
+        <p>{{ $t("home.pro.subtitle") }}</p>
       </div>
       <div class="list-wrapper">
         <div class="item-container">
-          <img src="/icons/people.png" alt="icon">
+          <img src="/icons/people.png" alt="icon" />
           <div class="flex flex-col gap-2">
-            <h1>{{ $t('home.pro.pros[0].title') }}</h1>
-            <p>{{ $t('home.pro.pros[0].subtitle') }}</p>
+            <h1>{{ $t("home.pro.pros[0].title") }}</h1>
+            <p>{{ $t("home.pro.pros[0].subtitle") }}</p>
           </div>
         </div>
         <div class="item-container">
-          <img src="/icons/mentoring.png" alt="icon">
+          <img src="/icons/mentoring.png" alt="icon" />
           <div class="flex flex-col gap-2">
-            <h1>{{ $t('home.pro.pros[1].title') }}</h1>
-            <p>{{ $t('home.pro.pros[1].subtitle') }}</p>
+            <h1>{{ $t("home.pro.pros[1].title") }}</h1>
+            <p>{{ $t("home.pro.pros[1].subtitle") }}</p>
           </div>
         </div>
         <div class="item-container">
-          <img src="/icons/service.png" alt="icon">
+          <img src="/icons/service.png" alt="icon" />
           <div class="flex flex-col gap-2">
-            <h1>{{ $t('home.pro.pros[2].title') }}</h1>
-            <p>{{ $t('home.pro.pros[2].subtitle') }}</p>
+            <h1>{{ $t("home.pro.pros[2].title") }}</h1>
+            <p>{{ $t("home.pro.pros[2].subtitle") }}</p>
           </div>
         </div>
       </div>
@@ -82,15 +87,15 @@
 
 <style scoped>
 .banner-container {
-  @apply md:p-12 p-2 bg-gradient-to-tr from-blue-900 via-blue-600 to-blue-800 h-[500px] flex items-center overflow-hidden relative;
+  @apply relative flex h-[500px] items-center overflow-hidden bg-gradient-to-tr from-blue-900 via-blue-600 to-blue-800 p-2 md:p-12;
 }
 
 .banner-container button {
-  @apply text-lg
+  @apply text-lg;
 }
 
 .banner1 {
-  @apply absolute right-0 bottom-0 mix-blend-multiply;
+  @apply absolute bottom-0 right-0 mix-blend-multiply;
 }
 
 .title-container {
@@ -111,19 +116,19 @@
 }
 
 .title-container .text-wrapper h1 span.sub {
-  @apply text-xl text-neutral-300 ml-2;
+  @apply ml-2 text-xl text-neutral-300;
 }
 
 .features-container {
-  @apply md:flex md:flex-row grid grid-cols-2 gap-12 w-full justify-center;
+  @apply grid w-full grid-cols-2 justify-center gap-12 md:flex md:flex-row;
 }
 
 .features-container .feature {
-  @apply flex flex-col gap-2 items-center;
+  @apply flex flex-col items-center gap-2;
 }
 
 .features-container .feature .icon {
-  @apply w-16 h-16;
+  @apply h-16 w-16;
 }
 
 .features-container .feature p {
@@ -131,7 +136,7 @@
 }
 
 .pro-container {
-  @apply flex flex-col gap-12 justify-center items-center w-full text-center;
+  @apply flex w-full flex-col items-center justify-center gap-12 text-center;
 }
 
 .pro-container .text-wrapper {
@@ -143,19 +148,19 @@
 }
 
 .pro-container .text-wrapper p {
-  @apply text-2xl md:text-4xl font-bold text-blue-500;
+  @apply text-2xl font-bold text-blue-500 md:text-4xl;
 }
 
 .pro-container .list-wrapper {
-  @apply grid md:grid-cols-3 grid-cols-1 place-content-evenly w-full gap-12 md:gap-0;
+  @apply grid w-full grid-cols-1 place-content-evenly gap-12 md:grid-cols-3 md:gap-0;
 }
 
 .pro-container .list-wrapper .item-container {
-  @apply flex flex-col gap-4 items-center;
+  @apply flex flex-col items-center gap-4;
 }
 
 .pro-container .list-wrapper .item-container img {
-  @apply w-28 h-28;
+  @apply h-28 w-28;
 }
 
 .pro-container .list-wrapper .item-container h1 {
@@ -163,6 +168,6 @@
 }
 
 .pro-container .list-wrapper .item-container p {
-  @apply text-base w-64 break-words;
+  @apply w-64 break-words text-base;
 }
 </style>
