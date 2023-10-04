@@ -1,7 +1,3 @@
-<script lang="ts">
-
-</script>
-
 <template>
   <div class="page-container">
     <!-- Banner -->
@@ -9,15 +5,15 @@
       <div class="title-container">
         <div class="text-wrapper">
           <h1>
-            พวกเราจะเติบโตตามเป้าหมายด้วยกัน
+            {{ $t('home.banner.title') }}
           </h1>
           <h1>
-            <span class="highlight">"ผ่านไอเดียของคุณ"</span>
+            <span class="highlight">{{ $t('home.banner.subtitle') }}</span>
             <span class="sub">LET'S URGROWTH WEIGH UP YOUR IDEAS</span>
           </h1>
         </div>
         <button class="btn btn-warning w-80">
-          ไปใช้ไอเดียของคุณกัน!
+          {{ $t('home.banner.button') }}
         </button>
       </div>
       <img class="banner1" src="/images/banner1.svg" alt="Thinking" width="512">
@@ -27,56 +23,56 @@
     <div class="features-container">
       <div class="feature">
         <img class="icon" src="/icons/info.png" alt="icon">
-        <p>แนะนำ</p>
+        <p>{{ $t('home.features[0]')}}</p>
       </div>
       <div class="feature">
         <img class="icon" src="/icons/book.png" alt="icon">
-        <p>เรียนรู้</p>
+        <p>{{ $t('home.features[1]')}}</p>
       </div>
       <div class="feature">
         <img class="icon" src="/icons/target.png" alt="icon">
-        <p>วางแผน</p>
+        <p>{{ $t('home.features[2]')}}</p>
       </div>
       <div class="feature">
         <img class="icon" src="/icons/discuss.png" alt="icon">
-        <p>ปรึกษา</p>
+        <p>{{ $t('home.features[3]')}}</p>
       </div>
       <div class="feature">
         <img class="icon" src="/icons/community.png" alt="icon">
-        <p>ชุมชน</p>
+        <p>{{ $t('home.features[4]')}}</p>
       </div>
       <div class="feature">
         <img class="icon" src="/icons/grow.png" alt="icon">
-        <p>เติบโต</p>
+        <p>{{ $t('home.features[5]')}}</p>
       </div>
     </div>
 
     <!-- Why us? -->
     <div class="pro-container">
       <div class="text-wrapper">
-        <h1>ทำไมต้องใช้ URGROWTH?</h1>
-        <p>"เพราะพวกเราจะเติบโตตามเป้าหมายด้วยกัน ผ่านไอเดียของคุณ"</p>
+        <h1>{{ $t('home.pro.title') }}</h1>
+        <p>{{ $t('home.pro.subtitle') }}</p>
       </div>
       <div class="list-wrapper">
         <div class="item-container">
           <img src="/icons/people.png" alt="icon">
           <div class="flex flex-col gap-2">
-            <h1>ชุมชนคุณภาพ</h1>
-            <p>ชุมชนที่มีความคิดที่เหมือนคุณ และมีประสบการณ์ตรงในการทำงาน</p>
+            <h1>{{ $t('home.pro.pros[0].title') }}</h1>
+            <p>{{ $t('home.pro.pros[0].subtitle') }}</p>
           </div>
         </div>
         <div class="item-container">
           <img src="/icons/mentoring.png" alt="icon">
           <div class="flex flex-col gap-2">
-            <h1>ปรึกษาจากผู้เชี่ยวชาญ</h1>
-            <p>ปรึกษาและวางแผน จากผู้เชี่ยวชาญมากประสบการณ์โดยตรง</p>
+            <h1>{{ $t('home.pro.pros[1].title') }}</h1>
+            <p>{{ $t('home.pro.pros[1].subtitle') }}</p>
           </div>
         </div>
         <div class="item-container">
           <img src="/icons/service.png" alt="icon">
           <div class="flex flex-col gap-2">
-            <h1>บริการที่หลากหลาย</h1>
-            <p>มีบริการหลากหลายให้เลือกใช้ เพื่อพัฒนาศักยภาพของคุณ</p>
+            <h1>{{ $t('home.pro.pros[2].title') }}</h1>
+            <p>{{ $t('home.pro.pros[2].subtitle') }}</p>
           </div>
         </div>
       </div>
