@@ -1,17 +1,21 @@
 <script setup>
+import { onMounted } from "vue";
+
 const { locale } = useI18n();
 const lang = {
   th: "English",
   en: "ภาษาไทย",
 }
 
+onMounted(() => {
+  locale.value = window.localStorage.getItem("locale") || "en";
+})
+
 function changeLanguage(e) {
-  e.preventDefault();
-  if (locale.value === 'en') {
-    locale.value = 'th';
-  } else {
-    locale.value = 'en';
-  }
+  locale.value = locale.value === "en" ? "th" : "en";
+  window.localStorage.setItem("locale", locale.value);
+
+
 }
 </script>
 

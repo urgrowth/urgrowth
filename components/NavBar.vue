@@ -5,7 +5,7 @@
     </div>
     <div class="navbar-center logo-container">
       <img src="/images/logo-black.svg" alt="Logo">
-      <h1>URGROWTH</h1>
+      <h1 id="company-title">URGROWTH</h1>
     </div>
     <div class="navbar-end">
       <img class="icon" src="/icons/user.png" alt="Account">

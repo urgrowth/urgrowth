@@ -7,7 +7,7 @@ export default defineI18nConfig(() => ({
         banner: {
           title: "Together we will grow on target",
           subtitle: "\"Through your ideas\"",
-          button: "Let's use your ideas!"
+          button: "Let's use your ideas!",
         },
         features: [
           "Advice",
@@ -15,7 +15,7 @@ export default defineI18nConfig(() => ({
           "Plan",
           "Consult",
           "Community",
-          "Growth"
+          "Growth",
         ],
         pro: {
           title: "Why use URGROWTH?",
@@ -32,9 +32,9 @@ export default defineI18nConfig(() => ({
             {
               title: "Variety of Services",
               subtitle: "We provide a variety of services to help you improve your skills.",
-            }
-          ]
-        }
+            },
+          ],
+        },
       },
     },
     th: {
@@ -42,7 +42,7 @@ export default defineI18nConfig(() => ({
         banner: {
           title: "พวกเราจะเติบโตตามเป้าหมายด้วยกัน",
           subtitle: "\"ผ่านไอเดียของคุณ\"",
-          button: "ไปใช้ไอเดียของคุณกัน!"
+          button: "ไปใช้ไอเดียของคุณกัน!",
         },
         features: [
           "แนะนำ",
@@ -50,7 +50,7 @@ export default defineI18nConfig(() => ({
           "วางแผน",
           "ปรึกษา",
           "ชุมชน",
-          "เติบโต"
+          "เติบโต",
         ],
         pro: {
           title: "ทำไมต้องใช้ URGROWTH?",
@@ -58,19 +58,19 @@ export default defineI18nConfig(() => ({
           pros: [
             {
               title: "ชุมชนคุณภาพ",
-              subtitle: "ชุมชนที่มีความคิดที่เหมือนคุณ และมีประสบการณ์ตรงในการทำงาน"
+              subtitle: "ชุมชนที่มีความคิดที่เหมือนคุณ และมีประสบการณ์ตรงในการทำงาน",
             },
             {
               title: "ปรึกษาจากผู้เชี่ยวชาญ",
-              subtitle: "ปรึกษาและวางแผน จากผู้เชี่ยวชาญมากประสบการณ์โดยตรง"
+              subtitle: "ปรึกษาและวางแผน จากผู้เชี่ยวชาญมากประสบการณ์โดยตรง",
             },
             {
               title: "บริการที่หลากหลาย",
-              subtitle: "มีบริการหลากหลายให้เลือกใช้ เพื่อพัฒนาศักยภาพของคุณ"
+              subtitle: "มีบริการหลากหลายให้เลือกใช้ เพื่อพัฒนาศักยภาพของคุณ",
             },
-          ]
-        }
-      }
-    }
-  }
-}))
+          ],
+        },
+      },
+    },
+  },
+}));
