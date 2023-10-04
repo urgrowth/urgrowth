@@ -1,0 +1,22 @@
+:root {
+    --default-font: BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, a, li, label, input, button, textarea {
+    font-family: "Gabarito", "Anuphan", var(--default-font);
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.page-layouts {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.page-container {
+    @apply flex flex-col gap-16;
+}
