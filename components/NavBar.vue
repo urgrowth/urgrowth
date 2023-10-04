@@ -1,11 +1,13 @@
 <template>
   <nav>
     <div class="navbar-start">
-      <img class="icon" src="/icons/hamburger.png" alt="Menu" />
+      <label for="my-drawer">
+        <img class="icon" src="/icons/hamburger.png" alt="Menu" />
+      </label>
     </div>
     <div class="logo-container navbar-center">
       <img src="/images/logo-black.svg" alt="Logo" />
-      <h1 id="company-title">URGROWTH</h1>
+      <h1>URGROWTH</h1>
     </div>
     <div class="navbar-end">
       <img class="icon" src="/icons/user.png" alt="Account" />
@@ -37,3 +39,5 @@ nav {
   @apply text-xl font-bold md:text-2xl;
 }
 </style>
+<script setup lang="ts">
+</script>
