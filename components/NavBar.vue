@@ -10,7 +10,9 @@
       <h1>URGROWTH</h1>
     </div>
     <div class="navbar-end">
-      <img class="icon" src="/icons/user.png" alt="Account" />
+      <NuxtLink to="/profile">
+        <img class="icon" src="/icons/user.png" alt="Account" />
+      </NuxtLink>
     </div>
   </nav>
 </template>

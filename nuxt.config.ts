@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import "dotenv/config";
 export default defineNuxtConfig({
-  modules: ["@nuxtjs/i18n", "@sidebase/nuxt-auth"],
+  modules: ["@nuxtjs/i18n", "@nuxtjs/supabase"],
   devtools: { enabled: true },
   css: [
     "@/assets/css/fonts.css",
@@ -23,4 +24,9 @@ export default defineNuxtConfig({
       ],
     },
   },
+  supabase: {
+    url: process.env.SUPABASE_URL,
+    key: process.env.SUPABASE_KEY,
+    redirect: false,
+  }
 });

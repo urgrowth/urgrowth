@@ -70,5 +70,3 @@ a {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 </style>
-<script setup lang="ts">
-</script>
