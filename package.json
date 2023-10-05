@@ -25,7 +25,9 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.38.0",
     "autoprefixer": "^10.4.16",
+    "next-auth": "4.21.1",
     "postcss": "^8.4.31",
     "prettier-plugin-tailwind": "^2.2.12",
     "tailwindcss": "^3.3.3"

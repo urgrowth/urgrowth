@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@nuxtjs/i18n"],
+  modules: ["@nuxtjs/i18n", "@sidebase/nuxt-auth"],
   devtools: { enabled: true },
   css: [
     "@/assets/css/fonts.css",
