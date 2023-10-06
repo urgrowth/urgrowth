@@ -14,7 +14,7 @@
           <li><NuxtLink to="/notifications"><img src="/icons/bell.png" alt="Notifications" class="w-6">Notifications</NuxtLink></li>
           <div class="divider"></div>
           <li>
-            <NuxtLink to="/suggestions"><img src="/icons/discuss.png" alt="Suggestions" class="w-6">Suggestions</NuxtLink>
+            <NuxtLink to="/suggestions"><img src="/icons/info.png" alt="Suggestions" class="w-6">Suggestions</NuxtLink>
             <NuxtLink to="/suggestions/model" class="ml-8">Model</NuxtLink>
           </li>
           <div class="divider"></div>

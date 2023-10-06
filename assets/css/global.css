@@ -29,6 +29,7 @@ textarea {
   margin-left: 12px;
   margin-right: 12px;
   animation: popUpSlideToTopFadeIn 0.75s ease-in-out;
+  min-height: 100vh;
 }
 
 .page-container {

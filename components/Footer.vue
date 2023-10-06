@@ -19,7 +19,7 @@ function changeLanguage(e) {
 
 <template>
   <div
-    class="mt-8 flex w-full items-center justify-between bg-neutral-200 px-[12px] py-8"
+    class="mt-8 flex w-full items-center justify-between bg-gradient-to-b from-white to-neutral-200 px-[12px] py-8"
   >
     <button @click="changeLanguage" class="btn btn-primary">
       {{ lang[locale] }}

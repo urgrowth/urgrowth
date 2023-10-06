@@ -5,7 +5,7 @@
         <img class="icon" src="/icons/hamburger.png" alt="Menu" />
       </label>
     </div>
-    <div class="logo-container navbar-center">
+    <div class="cursor-pointer logo-container navbar-center" @click="navigateTo('/')">
       <img src="/images/logo-black.svg" alt="Logo" />
       <h1>URGROWTH</h1>
     </div>

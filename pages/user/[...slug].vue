@@ -1,88 +1,59 @@
-<script setup>
-definePageMeta({
-  middleware: ['auth']
-})
-
-import { faker } from "@faker-js/faker";
-import nuxtStorage from 'nuxt-storage';
-
-const user = useSupabaseUser();
+<script setup lang="ts">
 const supabase = useSupabaseClient();
-const userData = nuxtStorage.localStorage.getData("userData");
+const slug = useRoute().params.slug;
 
-if (!userData || !userData?.expired) {
-  const { data } = await supabase
-    .from("userData")
-    .select("*")
-    .eq("id", user.value?.id)
-    .single();
+const { data } = await supabase
+  .from("userData")
+  .select("*")
+  .eq("handle", slug)
+  .single();
 
-  if (!data) {
-    await supabase.from("userData").insert([
-      {
-        id: user.value?.id,
-        handle: faker.internet.userName().toLowerCase(),
-        status: "user",
-        avatarURL: user.value?.user_metadata.avatar_url,
-        full_name: user.value?.user_metadata.full_name,
-      },
-    ]);
-  }
-
-  nuxtStorage.localStorage.setData("userData", data);
-}
-console.log(userData);
-
-function logout() {
-  supabase.auth.signOut();
-  return navigateTo("/");
-}
+//{"handle":"tinarskii","status":"admin","id":"24afeaaf-1ff0-4102-9b51-4c9b27ece754","accomplishment":[],"bio":"My mission is...","introduction":"My goal is...","location":"","interests":[],"skills":[]}
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 md:px-12 md:py-6 px-4 py-2">
+  <div class="flex flex-col gap-4 md:px-12 md:py-6 px-4 py-2" v-if="data">
     <div class="page-container">
       <div class="profile-container">
-        <img :src="userData?.avatarURL" alt="avatar" class="icon">
-        <h1 class="full_name">{{ userData?.full_name }}</h1>
-        <h1 class="handle">@{{ userData?.handle }}</h1>
-        <div class="flex gap-2">
-          <button class="btn btn-primary" >EDIT PROFILE</button>
-          <button class="btn btn-error" @click="logout">SIGN OUT</button>
-        </div>
+        <img :src="data.avatarURL" alt="avatar" class="icon">
+        <h1 class="full_name">{{ data.full_name }}</h1>
+        <h1 class="handle">@{{ data.handle }}</h1>
       </div>
       <div class="side-info-container">
         <div class="items-container">
           <h1>Skills</h1>
           <div class="items-wrapper" >
-            <div class="skill" v-for="skill in userData?.skills">
+            <div class="skill" v-for="skill in data?.skills">
               {{ skill }}
             </div>
-            <p v-if="!userData?.skills?.length">No skills added yet 😢</p>
+            <p v-if="!data.skills?.length">No skills added yet 😢</p>
           </div>
         </div>
         <div class="items-container">
           <h1>Interests</h1>
           <div class="items-wrapper" >
-            <div class="interest" v-for="interest in userData?.interests">
+            <div class="interest" v-for="interest in data?.interests">
               {{ interest }}
             </div>
-            <p v-if="!userData?.interests?.length">No interests added yet 😢</p>
+            <p v-if="!data.interests?.length">No interests added yet 😢</p>
           </div>
         </div>
         <div class="items-container">
           <h1>Mission</h1>
-          <p>{{ userData?.bio }}</p>
+          <p>{{ data.bio }}</p>
         </div>
       </div>
     </div>
     <div class="divider"><h1>INTRODUCTION</h1></div>
     <div class="introduction">
       <p>
-        {{ userData?.introduction }}
+        {{ data.introduction }}
       </p>
     </div>
     <div class="divider"><h1>CONNECTIONS</h1></div>
+  </div>
+  <div class="grid grid-cols-1 w-full place-items-center" v-else>
+    <p class="text-2xl">User not found</p>
   </div>
 </template>
 
