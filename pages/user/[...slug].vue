@@ -8,7 +8,6 @@ const { data } = await supabase
   .eq("handle", slug)
   .single();
 
-//{"handle":"tinarskii","status":"admin","id":"24afeaaf-1ff0-4102-9b51-4c9b27ece754","accomplishment":[],"bio":"My mission is...","introduction":"My goal is...","location":"","interests":[],"skills":[]}
 </script>
 
 <template>

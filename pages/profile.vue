@@ -8,7 +8,7 @@ import nuxtStorage from 'nuxt-storage';
 
 const user = useSupabaseUser();
 const supabase = useSupabaseClient();
-const userData = nuxtStorage.localStorage.getData("userData");
+const userData = nuxtStorage.localStorage?.getData("userData");
 
 if (!userData || !userData?.expired) {
   const { data } = await supabase
@@ -29,7 +29,7 @@ if (!userData || !userData?.expired) {
     ]);
   }
 
-  nuxtStorage.localStorage.setData("userData", data);
+  nuxtStorage.localStorage?.setData("userData", data);
 }
 console.log(userData);
 
