@@ -5,7 +5,10 @@
         <img class="icon" src="/icons/hamburger.png" alt="Menu" />
       </label>
     </div>
-    <div class="cursor-pointer logo-container navbar-center" @click="navigateTo('/')">
+    <div
+      class="logo-container navbar-center cursor-pointer"
+      @click="navigateTo('/')"
+    >
       <img src="/images/logo-black.svg" alt="Logo" />
       <h1>URGROWTH</h1>
     </div>
@@ -41,5 +44,4 @@ nav {
   @apply text-xl font-bold md:text-2xl;
 }
 </style>
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>

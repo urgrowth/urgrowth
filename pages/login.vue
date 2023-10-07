@@ -13,11 +13,9 @@ onMounted(async () => {
     provider: "google",
     options: {
       redirectTo: window.location.origin,
-    }
-  })
-})
+    },
+  });
+});
 </script>
 
-<template>
-
-</template>
+<template></template>

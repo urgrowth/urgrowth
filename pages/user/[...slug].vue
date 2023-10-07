@@ -3,25 +3,28 @@ const slug = useRoute().params.slug;
 
 const res = await $fetch("/api/getUser", {
   body: {
-    handle: slug
+    handle: slug,
   },
-  method: "POST"
-})
+  method: "POST",
+});
 const data = JSON.parse(res?.body);
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 md:px-12 md:py-6 px-4 py-2" v-if="data && res.status === 200">
+  <div
+    class="flex flex-col gap-4 px-4 py-2 md:px-12 md:py-6"
+    v-if="data && res.status === 200"
+  >
     <div class="page-container">
       <div class="profile-container">
-        <img :src="data.avatarURL" alt="avatar" class="icon">
+        <img :src="data.avatarURL" alt="avatar" class="icon" />
         <h1 class="full_name">{{ data.full_name }}</h1>
         <h1 class="handle">@{{ data.handle }}</h1>
       </div>
       <div class="side-info-container">
         <div class="items-container">
           <h1>Skills</h1>
-          <div class="items-wrapper" >
+          <div class="items-wrapper">
             <div class="skill" v-for="skill in data?.skills">
               {{ skill }}
             </div>
@@ -30,7 +33,7 @@ const data = JSON.parse(res?.body);
         </div>
         <div class="items-container">
           <h1>Interests</h1>
-          <div class="items-wrapper" >
+          <div class="items-wrapper">
             <div class="interest" v-for="interest in data?.interests">
               {{ interest }}
             </div>
@@ -46,12 +49,15 @@ const data = JSON.parse(res?.body);
     <div class="divider"><h1>INTRODUCTION</h1></div>
     <div class="introduction">
       <p>
-        {{ data.introduction ?? "We don't know about them, but they probably doing great!" }}
+        {{
+          data.introduction ??
+          "We don't know about them, but they probably doing great!"
+        }}
       </p>
     </div>
     <div class="divider"><h1>CONNECTIONS</h1></div>
   </div>
-  <div class="grid grid-cols-1 w-full place-items-center" v-else>
+  <div class="grid w-full grid-cols-1 place-items-center" v-else>
     <p class="text-2xl">User not found</p>
   </div>
 </template>
@@ -62,11 +68,11 @@ h1 {
 }
 
 .page-container {
-  @apply grid md:grid-cols-2 grid-cols-1 w-full;
+  @apply grid w-full grid-cols-1 md:grid-cols-2;
 }
 
 .profile-container {
-  @apply flex flex-col gap-2 items-center justify-center;
+  @apply flex flex-col items-center justify-center gap-2;
   animation: gradient 5s ease-in-out infinite;
   background-size: 400% 400%;
 }
@@ -102,11 +108,11 @@ h1 {
 }
 
 .skill {
-  @apply rounded-full bg-gradient-to-tr from-blue-900 to-blue-600 text-white text-sm px-4 py-2;
+  @apply rounded-full bg-gradient-to-tr from-blue-900 to-blue-600 px-4 py-2 text-sm text-white;
 }
 
 .interest {
-  @apply rounded-full bg-gradient-to-tr from-green-900 to-green-600 text-white text-sm px-4 py-2;
+  @apply rounded-full bg-gradient-to-tr from-green-900 to-green-600 px-4 py-2 text-sm text-white;
 }
 
 .introduction p {
