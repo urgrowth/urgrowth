@@ -1,0 +1,34 @@
+import { serverSupabaseClient } from "#supabase/server";
+import md5 from "md5/md5";
+
+export default defineEventHandler(async (event) => {
+  const body = await readBody(event)
+  const { id, handle, full_name, skills, interests, bio, introduction } = body;
+  const supabase = await serverSupabaseClient(event);
+
+  const skillsFiltered = skills.filter((skill: string) => skill !== '');
+  const interestsFiltered = interests.filter((interest: string) => interest !== '');
+
+  if (handle > 32) return { status: 500, body: 'Handle must be less than 32 characters' };
+  if (full_name > 64) return { status: 500, body: 'Full name must be less than 64 characters' };
+  if (skillsFiltered.length > 5) return { status: 500, body: 'Skills must be less than 5' };
+  if (interestsFiltered.length > 5) return { status: 500, body: 'Interests must be less than 5' };
+  if (bio > 256) return { status: 500, body: 'Bio must be less than 256 characters' };
+  if (introduction > 2048) return { status: 500, body: 'Introduction must be less than 2048 characters' };
+
+  const { error } = await supabase
+    .from('userData')
+    .update({
+      handle: handle,
+      full_name: full_name,
+      skills: skills,
+      interests: interests,
+      bio: bio,
+      introduction: introduction,
+    })
+  .eq('id', id)
+
+  if (error) return { status: 500, body: error.message };
+
+  return { status: 200 };
+})

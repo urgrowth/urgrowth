@@ -34,7 +34,7 @@ function logout() {
         <h1 class="full_name">{{ userData?.full_name }}</h1>
         <h1 class="handle">@{{ userData?.handle }}</h1>
         <div class="flex gap-2">
-          <button class="btn btn-primary" >EDIT PROFILE</button>
+          <button class="btn btn-primary" @click="navigateTo('/profile/edit')">EDIT PROFILE</button>
           <button class="btn btn-error" @click="logout">SIGN OUT</button>
         </div>
       </div>
@@ -127,6 +127,6 @@ h1 {
 }
 
 .introduction p {
-  @apply text-sm;
+  @apply text-base;
 }
 </style>
