@@ -1,5 +1,6 @@
 import { serverSupabaseClient } from "#supabase/server";
 import md5 from "md5/md5";
+import crypto from "crypto";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
@@ -51,6 +52,11 @@ export default defineEventHandler(async (event) => {
     .eq("id", id);
 
   if (error) return { status: 500, body: error.message };
+  const md5 = crypto
+    .createHash("md5")
+    .update(Buffer.from(email ?? ""))
+    .digest("hex");
+  user.avatarURL = `https://www.gravatar.com/avatar/${md5}?d=retro&size=128`;
 
   return { status: 200 };
 });
