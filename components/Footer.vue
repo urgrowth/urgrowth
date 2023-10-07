@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from "vue";
+import nuxtStorage from "nuxt-storage";
 
 const { locale } = useI18n();
 const lang = {
@@ -7,13 +7,11 @@ const lang = {
   en: "ภาษาไทย",
 };
 
-onMounted(() => {
-  locale.value = window.localStorage.getItem("locale") || "en";
-});
+locale.value = nuxtStorage.localStorage?.getData("locale") || "en";
 
 function changeLanguage(e) {
   locale.value = locale.value === "en" ? "th" : "en";
-  window.localStorage.setItem("locale", locale.value);
+  nuxtStorage.localStorage?.setData("locale", locale.value);
 }
 </script>
 

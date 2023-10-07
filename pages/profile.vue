@@ -10,7 +10,7 @@ const user = useSupabaseUser();
 const supabase = useSupabaseClient();
 const userData = nuxtStorage.localStorage?.getData("userData");
 
-if (!userData || !userData?.expired) {
+if (!userData || userData?.expired) {
   const { data } = await supabase
     .from("userData")
     .select("*")
@@ -35,6 +35,7 @@ console.log(userData);
 
 function logout() {
   supabase.auth.signOut();
+  nuxtStorage.localStorage?.removeItem("userData")
   return navigateTo("/");
 }
 </script>
