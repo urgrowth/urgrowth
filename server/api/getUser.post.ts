@@ -34,7 +34,7 @@ export default defineEventHandler(async (event) => {
 
   const md5 = crypto
     .createHash("md5")
-    .update(Buffer.from(email ?? ""))
+    .update(Buffer.from(email ?? user?.email ?? ""))
     .digest("hex");
   user.avatarURL = `https://www.gravatar.com/avatar/${md5}?d=retro&size=128`;
 
