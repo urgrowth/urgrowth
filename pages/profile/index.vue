@@ -3,39 +3,25 @@ definePageMeta({
   middleware: ['auth']
 })
 
-import { faker } from "@faker-js/faker";
-import nuxtStorage from 'nuxt-storage';
-
 const user = useSupabaseUser();
 const supabase = useSupabaseClient();
-const userData = nuxtStorage.localStorage?.getData("userData");
 
-if (!userData || userData?.expired) {
-  const { data } = await supabase
-    .from("userData")
-    .select("*")
-    .eq("id", user.value?.id)
-    .single();
+const res = await $fetch("/api/getUser", {
+  body: {
+    id: user.value?.id
+  },
+  method: "POST"
+})
 
-  if (!data) {
-    await supabase.from("userData").insert([
-      {
-        id: user.value?.id,
-        handle: faker.internet.userName().toLowerCase(),
-        status: "user",
-        avatarURL: user.value?.user_metadata.avatar_url,
-        full_name: user.value?.user_metadata.full_name,
-      },
-    ]);
-  }
+const userData = JSON.parse(res?.body ?? {});
 
-  nuxtStorage.localStorage?.setData("userData", data);
+if (res?.status !== 200) {
+  alert("Something went wrong");
+  navigateTo("/");
 }
-console.log(userData);
 
 function logout() {
   supabase.auth.signOut();
-  nuxtStorage.localStorage?.removeItem("userData")
   return navigateTo("/");
 }
 </script>

@@ -1,17 +1,17 @@
 <script setup lang="ts">
-const supabase = useSupabaseClient();
 const slug = useRoute().params.slug;
 
-const { data } = await supabase
-  .from("userData")
-  .select("*")
-  .eq("handle", slug)
-  .single();
-
+const res = await $fetch("/api/getUser", {
+  body: {
+    handle: slug
+  },
+  method: "POST"
+})
+const data = JSON.parse(res?.body);
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 md:px-12 md:py-6 px-4 py-2" v-if="data">
+  <div class="flex flex-col gap-4 md:px-12 md:py-6 px-4 py-2" v-if="data && res.status === 200">
     <div class="page-container">
       <div class="profile-container">
         <img :src="data.avatarURL" alt="avatar" class="icon">
