@@ -33,7 +33,7 @@ export default defineEventHandler(async (event) => {
 
   const { data: handleData } = await supabase
     .from("userData")
-    .select("handle")
+    .select("handle, email")
     .eq("handle", handle)
     .single();
 
@@ -54,7 +54,7 @@ export default defineEventHandler(async (event) => {
   if (error) return { status: 500, body: error.message };
   const md5 = crypto
     .createHash("md5")
-    .update(Buffer.from(email ?? ""))
+    .update(Buffer.from(email ?? handleData?.email ?? ""))
     .digest("hex");
   user.avatarURL = `https://www.gravatar.com/avatar/${md5}?d=retro&size=128`;
 
