@@ -39,14 +39,14 @@ const data = JSON.parse(res?.body);
         </div>
         <div class="items-container">
           <h1>Mission</h1>
-          <p>{{ data.bio }}</p>
+          <p>{{ data.bio ?? "🤔Haven't thought of it yet..." }}</p>
         </div>
       </div>
     </div>
     <div class="divider"><h1>INTRODUCTION</h1></div>
     <div class="introduction">
       <p>
-        {{ data.introduction }}
+        {{ data.introduction ?? "We don't know about them, but they probably doing great!" }}
       </p>
     </div>
     <div class="divider"><h1>CONNECTIONS</h1></div>

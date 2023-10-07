@@ -8,17 +8,21 @@ const supabase = useSupabaseClient();
 
 const res = await $fetch("/api/getUser", {
   body: {
-    id: user.value?.id
+    id: user.value?.id,
+    full_name: user.value?.user_metadata?.full_name,
+    email: user.value?.email,
   },
   method: "POST"
 })
 
-const userData = JSON.parse(res?.body ?? {});
-
 if (res?.status !== 200) {
-  alert("Something went wrong");
-  navigateTo("/");
+  createError({
+    statusCode: res?.status,
+    message: res?.body
+  })
 }
+
+const userData = JSON.parse(res?.body ?? {});
 
 function logout() {
   supabase.auth.signOut();

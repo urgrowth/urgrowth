@@ -16,6 +16,17 @@ export default defineEventHandler(async (event) => {
   if (bio > 256) return { status: 500, body: 'Bio must be less than 256 characters' };
   if (introduction > 2048) return { status: 500, body: 'Introduction must be less than 2048 characters' };
 
+  if (!handle) return { status: 500, body: 'Handle is required' };
+  if (!full_name) return { status: 500, body: 'Full name is required' };
+
+  const { data: handleData } = await supabase
+    .from('userData')
+    .select('handle')
+    .eq('handle', handle)
+    .single();
+
+  if (handleData?.handle) return { status: 500, body: 'Handle already exists' };
+
   const { error } = await supabase
     .from('userData')
     .update({

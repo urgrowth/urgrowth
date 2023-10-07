@@ -9,6 +9,7 @@ const supabase = useSupabaseClient();
 const res = await $fetch("/api/getUser", {
   body: {
     id: user.value?.id,
+    email: user.value?.email,
   },
   method: "POST",
 });
@@ -39,6 +40,7 @@ function submit(e) {
   $fetch("/api/updateUser", {
     body: {
       id: user.value?.id,
+      email: user.value?.email,
       full_name: newData.full_name,
       handle: newData.handle,
       skills: newData.skills,
@@ -51,12 +53,10 @@ function submit(e) {
     if (res.status === 200) {
       alert("Profile updated!");
       return navigateTo("/profile");
+    } else {
+      alert(res.body.toString());
     }
 
-    createError({
-      statusCode: res.status,
-      message: res.body,
-    });
   });
 }
 </script>
