@@ -7,7 +7,7 @@ const res = await $fetch("/api/getUser", {
   },
   method: "POST",
 });
-const data = JSON.parse(res?.body);
+const data = res.status === 200 ? JSON.parse(res?.body) : null;
 </script>
 
 <template>
