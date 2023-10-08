@@ -107,7 +107,7 @@ function submit(e) {
             </div>
           </div>
           <div class="flex gap-2">
-            <button class="btn btn-success">SAVE</button>
+            <button class="btn btn-success" @click="(e) => e.target.disabled = true">SAVE</button>
             <span class="btn btn-error" @click="navigateTo('/profile')">CANCEL</span>
           </div>
         </div>
