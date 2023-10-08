@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import { md5 } from "~/lib/md5";
+const user = useSupabaseUser();
+
+const avatar = `https://www.gravatar.com/avatar/${md5(
+  user.value?.email ?? ""
+)}?d=mp&s=48`;
+</script>
+
 <template>
   <nav>
     <div class="navbar-start">
@@ -14,7 +23,8 @@
     </div>
     <div class="navbar-end">
       <NuxtLink to="/profile">
-        <img class="icon" src="/icons/user.png" alt="Account" />
+        <img class="rounded-full" :src="avatar" alt="Account" v-if="user" />
+        <img class="icon" src="/icons/user.png" alt="Account" v-else/>
       </NuxtLink>
     </div>
   </nav>
@@ -44,4 +54,3 @@ nav {
   @apply text-xl font-bold md:text-2xl;
 }
 </style>
-<script setup lang="ts"></script>
