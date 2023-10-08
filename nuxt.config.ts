@@ -28,6 +28,9 @@ export default defineNuxtConfig({
     url: process.env.SUPABASE_URL,
     key: process.env.SUPABASE_KEY,
     redirect: false,
+    cookieOptions: {
+      maxAge: 30 * (24 * (60 * 60)),
+    }
   },
   nitro: {
     preset: "vercel"

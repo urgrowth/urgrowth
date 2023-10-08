@@ -3,7 +3,7 @@ import { md5 } from "~/lib/md5";
 const user = useSupabaseUser();
 
 const avatar = `https://www.gravatar.com/avatar/${md5(
-  user.value?.email ?? ""
+  user.value?.email ?? "",
 )}?d=mp&s=48`;
 </script>
 
@@ -24,7 +24,7 @@ const avatar = `https://www.gravatar.com/avatar/${md5(
     <div class="navbar-end">
       <NuxtLink to="/profile">
         <img class="rounded-full" :src="avatar" alt="Account" v-if="user" />
-        <img class="icon" src="/icons/user.png" alt="Account" v-else/>
+        <img class="icon" src="/icons/user.png" alt="Account" v-else />
       </NuxtLink>
     </div>
   </nav>

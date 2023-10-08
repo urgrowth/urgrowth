@@ -18,15 +18,15 @@ export default defineEventHandler(async (event) => {
     )
     .single();
 
-  interface IUser {
-    id: string;
-    handle: string;
-    full_name: string;
-    skills: Array<string>;
-    interests: Array<string>;
-    email: string;
-    avatarURL: string;
-  }
+  // interface IUser {
+  //   id: string;
+  //   handle: string;
+  //   full_name: string;
+  //   skills: Array<string>;
+  //   interests: Array<string>;
+  //   email: string;
+  //   avatarURL: string;
+  // }
 
   const user = data as IUser | null;
 
@@ -39,7 +39,7 @@ export default defineEventHandler(async (event) => {
       skills: [] as Array<string>,
       interests: [] as Array<string>,
       email: email,
-    } as any /* TODO: Fix this type */);
+    } as never);
 
     if (error) return { status: 500, body: error.message };
   }

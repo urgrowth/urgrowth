@@ -1,9 +1,17 @@
 import { serverSupabaseClient } from "#supabase/server";
-import crypto from "crypto";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
-  const { id, handle, full_name, skills, interests, bio, introduction, location } = body;
+  const {
+    id,
+    handle,
+    full_name,
+    skills,
+    interests,
+    bio,
+    introduction,
+    location,
+  } = body;
   const supabase = await serverSupabaseClient(event);
 
   const skillsFiltered = skills.filter((skill: string) => skill !== "");
@@ -30,7 +38,11 @@ export default defineEventHandler(async (event) => {
   if (!handle) return { status: 500, body: "Handle is required" };
   if (!full_name) return { status: 500, body: "Full name is required" };
 
-  if (!handle.match(/^[a-zA-Z0-9_]+$/)) return { status: 500, body: "Handle must only contain alphanumeric characters and underscores" };
+  if (!handle.match(/^[a-zA-Z0-9_]+$/))
+    return {
+      status: 500,
+      body: "Handle must only contain alphanumeric characters and underscores",
+    };
 
   const { data: handleData } = await supabase
     .from("userData")
@@ -41,19 +53,18 @@ export default defineEventHandler(async (event) => {
 
   if (handleData?.handle) return { status: 500, body: "Handle already exists" };
 
-  interface IUserUpdate {
-    handle: string;
-    full_name: string;
-    skills: Array<string>;
-    interests: Array<string>;
-    bio: string;
-    introduction: string;
-    location: string
-  }
+  // interface IUserUpdate {
+  //   handle: string;
+  //   full_name: string;
+  //   skills: Array<string>;
+  //   interests: Array<string>;
+  //   bio: string;
+  //   introduction: string;
+  //   location: string;
+  // }
 
   const { error } = await supabase
     .from("userData")
-    // @ts-ignore
     .update({
       handle: handle.toLowerCase(),
       full_name,
@@ -62,7 +73,7 @@ export default defineEventHandler(async (event) => {
       bio,
       introduction,
       location,
-    } as IUserUpdate)
+    } as never)
     .eq("id", id);
 
   if (error) return { status: 500, body: error.message };

@@ -36,7 +36,10 @@ function logout() {
       <div class="profile-container">
         <img :src="userData?.avatarURL" alt="avatar" class="icon" />
         <h1 class="full_name">{{ userData?.full_name }}</h1>
-        <h1 class="handle">@{{ userData?.handle }} {{ userData?.location && " • " +  userData?.location }}</h1>
+        <h1 class="handle">
+          @{{ userData?.handle }}
+          {{ userData?.location && " • " + userData?.location }}
+        </h1>
         <div class="flex gap-2">
           <button class="btn btn-primary" @click="navigateTo('/profile/edit')">
             EDIT PROFILE
