@@ -18,15 +18,15 @@ export default defineEventHandler(async (event) => {
     )
     .single();
 
-  // interface IUser {
-  //   id: string;
-  //   handle: string;
-  //   full_name: string;
-  //   skills: Array<string>;
-  //   interests: Array<string>;
-  //   email: string;
-  //   avatarURL: string;
-  // }
+  interface IUser {
+    id: string;
+    handle: string;
+    full_name: string;
+    skills: Array<string>;
+    interests: Array<string>;
+    email: string;
+    avatarURL: string;
+  }
 
   const user = data as IUser | null;
 
