@@ -12,7 +12,7 @@
             <span class="sub">LET'S URGROWTH WEIGH UP YOUR IDEAS</span>
           </h1>
         </div>
-        <button class="btn btn-warning w-80">
+        <button class="btn btn-warning w-80" @click="navigateTo('/login')">
           {{ $t("home.banner.button") }}
         </button>
       </div>
