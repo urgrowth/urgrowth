@@ -1,10 +1,9 @@
 import { serverSupabaseClient } from "#supabase/server";
-import md5 from "md5/md5";
 import crypto from "crypto";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
-  const { id, handle, full_name, skills, interests, bio, introduction } = body;
+  const { id, handle, full_name, skills, interests, bio, introduction, location } = body;
   const supabase = await serverSupabaseClient(event);
 
   const skillsFiltered = skills.filter((skill: string) => skill !== "");
@@ -31,32 +30,42 @@ export default defineEventHandler(async (event) => {
   if (!handle) return { status: 500, body: "Handle is required" };
   if (!full_name) return { status: 500, body: "Full name is required" };
 
+  if (!handle.match(/^[a-zA-Z0-9_]+$/)) return { status: 500, body: "Handle must only contain alphanumeric characters and underscores" };
+
   const { data: handleData } = await supabase
     .from("userData")
     .select("handle, email")
     .eq("handle", handle)
+    .not("id", "eq", id)
     .single();
 
   if (handleData?.handle) return { status: 500, body: "Handle already exists" };
 
+  interface IUserUpdate {
+    handle: string;
+    full_name: string;
+    skills: Array<string>;
+    interests: Array<string>;
+    bio: string;
+    introduction: string;
+    location: string
+  }
+
   const { error } = await supabase
     .from("userData")
+    // @ts-ignore
     .update({
-      handle: handle,
-      full_name: full_name,
-      skills: skills,
-      interests: interests,
-      bio: bio,
-      introduction: introduction,
-    })
+      handle: handle.toLowerCase(),
+      full_name,
+      skills,
+      interests,
+      bio,
+      introduction,
+      location,
+    } as IUserUpdate)
     .eq("id", id);
 
   if (error) return { status: 500, body: error.message };
-  const md5 = crypto
-    .createHash("md5")
-    .update(Buffer.from(email ?? ""))
-    .digest("hex");
-  user.avatarURL = `https://www.gravatar.com/avatar/${md5}?d=retro&size=128`;
 
   return { status: 200 };
 });

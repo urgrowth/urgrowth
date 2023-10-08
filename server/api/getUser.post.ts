@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const { id, handle, full_name, email } = body;
   const supabase = await serverSupabaseClient(event);
 
-  const { data: user } = await supabase
+  const { data } = await supabase
     .from("userData")
     .select("*")
     // This fallback UUID must be a valid UUID, otherwise it will throw an error 500
@@ -18,16 +18,28 @@ export default defineEventHandler(async (event) => {
     )
     .single();
 
+  interface IUser {
+    id: string;
+    handle: string;
+    full_name: string;
+    skills: Array<string>;
+    interests: Array<string>;
+    email: string;
+    avatarURL: string;
+  }
+
+  const user = data as IUser | null;
+
   if (!user) {
     // Create a new user
     const { error } = await supabase.from("userData").insert({
       id: id,
       handle: faker.internet.userName(),
       full_name: full_name ?? "Anonymous",
-      skills: [],
-      interests: [],
+      skills: [] as Array<string>,
+      interests: [] as Array<string>,
       email: email,
-    });
+    } as any /* TODO: Fix this type */);
 
     if (error) return { status: 500, body: error.message };
   }
@@ -36,7 +48,7 @@ export default defineEventHandler(async (event) => {
     .createHash("md5")
     .update(Buffer.from(email ?? user?.email ?? ""))
     .digest("hex");
-  user.avatarURL = `https://www.gravatar.com/avatar/${md5}?d=retro&size=128`;
+  user!.avatarURL = `https://www.gravatar.com/avatar/${md5}?d=retro&size=128`;
 
   return { status: 200, body: JSON.stringify(user) };
 });
