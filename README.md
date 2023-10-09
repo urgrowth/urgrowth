@@ -1,10 +1,7 @@
 <p align="center"><img src="./public/images/logo-card.png" width="512"></p>
 
 <p align="center">
-
-This is the repository for the URGROWTH website. It is built using [Nuxt](https://nuxt.com/), [TailwindCSS](https://tailwindcss.com/)
-and [DaisyUI](https://daisyui.com/).
-
+This is the repository for the URGROWTH website. It is built using Nuxt, TailwindCSS and DaisyUI.
 </p>
 
 ## 📝 Table of Contents
