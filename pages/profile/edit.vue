@@ -13,6 +13,9 @@ const res = await $fetch("/api/getUser", {
   method: "POST",
 });
 
+const i18n = useI18n();
+const error = ref("")
+const success = ref(false)
 const userData = JSON.parse(res?.body ?? {});
 const newData = reactive({
   full_name: userData?.full_name,
@@ -33,6 +36,34 @@ if (res?.status !== 200) {
 function submit(e) {
   e.preventDefault();
 
+  const skillsFiltered = newData.skills.filter((skill) => skill !== "");
+  const interestsFiltered = newData.interests.filter(
+    (interest) => interest !== "",
+  );
+
+  if (newData.handle.length > 32)
+    return error.value = i18n.t("user.update.handle.maxLength");
+  if (newData.full_name.length > 64)
+    return error.value = i18n.t("user.update.fullName.maxLength");
+  if (skillsFiltered.length > 5)
+    return error.value = i18n.t("user.update.skills.maxLength");
+  if (interestsFiltered.length > 5)
+    return error.value = i18n.t("user.update.interests.maxLength");
+  if (newData.bio.length > 256)
+    return error.value = i18n.t("user.update.bio.maxLength");
+  if (newData.introduction.length > 2048)
+    return error.value = i18n.t("user.update.introduction.maxLength");
+
+  if (!newData.handle) return error.value = i18n.t("user.update.handle.required");
+  if (!newData.full_name) return error.value = i18n.t("user.update.fullName.required");
+
+  if (!newData.handle?.match(/^[a-zA-Z0-9_]+$/))
+    return error.value = i18n.t("user.update.handle.pattern");
+
+
+  if (newData.handle.length < 3)
+    return error.value = i18n.t("user.update.handle.minLength");
+
   $fetch("/api/updateUser", {
     body: {
       id: user.value?.id,
@@ -48,17 +79,24 @@ function submit(e) {
     method: "POST",
   }).then((res) => {
     if (res.status === 200) {
-      alert("Profile updated!");
-      return navigateTo("/profile");
+      success.value = true
     } else {
-      alert(res.body.toString());
-      isBtnDisabled.value = false;
+      if (res.errMsg?.length)
+        return error.value = i18n.t(res.errMsg);
+      error.value = res.body.toString();
     }
   });
+}
+
+function closeErrorDialog() {
+  error.value = "";
+  isBtnDisabled.value = false;
 }
 </script>
 
 <template>
+  <Modal :show="error?.length > 0" :title="$t('modal.title.error')" :description="error" end="ok" :handle-on-close="closeErrorDialog" />
+  <Modal :show="success" :title="$t('modal.title.success')" :description="$t('user.update.success')" end="ok" :handle-on-close="() => navigateTo('/profile')" />
   <form @submit.prevent="submit">
     <div class="flex flex-col gap-4 px-4 py-2 md:px-12 md:py-6">
       <div class="page-container">
@@ -75,7 +113,7 @@ function submit(e) {
             "
           />
           <div class="input-container">
-            <span class="label-text">Full name</span>
+            <span class="label-text">{{ $t("user.profile.fullName") }}</span>
             <input
               class="full_name input input-bordered"
               name="full_name"
@@ -84,12 +122,11 @@ function submit(e) {
               maxlength="64"
             />
             <span class="label-text-alt"
-              >{{ 64 - newData.full_name?.length }} characters left</span
-            >
+              >{{ 64 - newData.full_name?.length }} {{ $t("user.edit.charLeft") }}</span>
           </div>
           <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
             <div class="input-container">
-              <span class="label-text">Handle (username)</span>
+              <span class="label-text">{{ $t("user.profile.handle") }}</span>
               <input
                 class="handle input input-bordered input-sm"
                 name="handle"
@@ -98,11 +135,11 @@ function submit(e) {
                 maxlength="32"
               />
               <span class="label-text-alt"
-                >{{ 32 - newData.handle?.length }} characters left</span
+                >{{ 32 - newData.handle?.length }} {{ $t("user.edit.charLeft") }}</span
               >
             </div>
             <div class="input-container">
-              <span class="label-text">Location</span>
+              <span class="label-text">{{ $t("user.profile.location") }}</span>
               <select
                 class="input input-bordered input-sm"
                 name="location"
@@ -118,16 +155,16 @@ function submit(e) {
               v-bind:disabled="isBtnDisabled"
               @click="isBtnDisabled = true"
             >
-              SAVE
+              {{ $t("user.edit.save") }}
             </button>
             <span class="btn btn-error" @click="navigateTo('/profile')"
-              >CANCEL</span
+              >{{ $t("user.edit.cancel") }}</span
             >
           </div>
         </div>
         <div class="side-info-container">
           <div class="items-container">
-            <h1>Skills</h1>
+            <h1>{{ $t("user.profile.skills.title") }}</h1>
             <div class="items-wrapper">
               <div class="input-container w-full">
                 <input
@@ -145,13 +182,13 @@ function submit(e) {
                   "
                 />
                 <span class="label-text-alt"
-                  >{{ 5 - newData.skills.length }} tags left</span
+                  >{{ 5 - newData.skills.length }} {{ $t("user.edit.tagsLeft") }}</span
                 >
               </div>
             </div>
           </div>
           <div class="items-container">
-            <h1>Interests</h1>
+            <h1>{{ $t("user.profile.interests.title") }}</h1>
             <div class="items-wrapper">
               <div class="input-container w-full">
                 <input
@@ -166,13 +203,12 @@ function submit(e) {
                   placeholder="Gaming, Content Creation, Music Producing..."
                 />
                 <span class="label-text-alt"
-                  >{{ 5 - newData.interests.length }} tags left</span
-                >
+                  >{{ 5 - newData.interests.length }} {{ $t("user.edit.tagsLeft") }}</span>
               </div>
             </div>
           </div>
           <div class="items-container">
-            <h1>Mission</h1>
+            <h1>{{ $t("user.profile.bio.title") }}</h1>
             <input
               class="input input-bordered w-full"
               name="bio"
@@ -181,12 +217,11 @@ function submit(e) {
               v-model="newData.bio"
             />
             <span class="label-text-alt"
-              >{{ 256 - newData.bio?.length }} characters left</span
-            >
+              >{{ 256 - newData.bio?.length }} {{ $t("user.edit.charLeft") }}</span>
           </div>
         </div>
       </div>
-      <div class="divider"><h1>INTRODUCTION</h1></div>
+      <div class="divider"><h1>{{ $t("user.profile.introduction.title") }}</h1></div>
       <div class="introduction">
         <textarea
           class="input input-bordered h-[50vh] w-full"
@@ -197,11 +232,11 @@ function submit(e) {
         >
         </textarea>
         <span class="label-text-alt"
-          >{{ 2048 - newData.introduction?.length }} characters left</span
+          >{{ 2048 - newData.introduction?.length }} {{ $t("user.edit.charLeft") }}</span
         >
       </div>
       <div class="divider">
-        <h1>CONNECTIONS</h1>
+        <h1>{{ $t("user.profile.connections") }}</h1>
         <!-- Let's just hope we have another backend developer -->
       </div>
     </div>

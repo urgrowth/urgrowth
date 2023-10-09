@@ -23,42 +23,47 @@ const data = res.status === 200 ? JSON.parse(res?.body) : null;
       </div>
       <div class="side-info-container">
         <div class="items-container">
-          <h1>Skills</h1>
+          <h1>{{ $t("user.profile.skills.title") }}</h1>
           <div class="items-wrapper">
             <div class="skill" v-for="skill in data?.skills">
               {{ skill }}
             </div>
-            <p v-if="!data.skills?.length">No skills added yet 😢</p>
+            <p v-if="!data.skills?.length">{{ $t("user.profile.skills.empty") }}</p>
           </div>
         </div>
         <div class="items-container">
-          <h1>Interests</h1>
+          <h1>{{ $t("user.profile.interests.title") }}</h1>
           <div class="items-wrapper">
             <div class="interest" v-for="interest in data?.interests">
               {{ interest }}
             </div>
-            <p v-if="!data.interests?.length">No interests added yet 😢</p>
+            <p v-if="!data.interests?.length">{{ $t("user.profile.interests.empty") }}</p>
           </div>
         </div>
         <div class="items-container">
-          <h1>Mission</h1>
-          <p>{{ data.bio ?? "🤔Haven't thought of it yet..." }}</p>
+          <h1>{{ $t("user.profile.bio.title") }}</h1>
+          <p>{{ data.bio ?? $t("user.profile.bio.empty") }}</p>
         </div>
       </div>
     </div>
-    <div class="divider"><h1>INTRODUCTION</h1></div>
+    <div class="divider"><h1>{{ $t("user.profile.introduction.title") }}</h1></div>
     <div class="introduction">
       <p>
         {{
           data.introduction ??
-          "We don't know about them, but they probably doing great!"
+            $t("user.profile.introduction.empty")
         }}
       </p>
     </div>
-    <div class="divider"><h1>CONNECTIONS</h1></div>
+    <div class="divider"><h1>{{ $t("user.profile.connections") }}</h1></div>
   </div>
   <div class="grid w-full grid-cols-1 place-items-center" v-else>
-    <p class="text-2xl">User not found</p>
+    <Modal
+      :title="$t('modal.title.error')"
+      :description="$t('user.profile.notFound')"
+      end="ok"
+      :handle-on-close="() => navigateTo('/')"
+    />
   </div>
 </template>
 
