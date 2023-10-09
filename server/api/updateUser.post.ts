@@ -44,6 +44,13 @@ export default defineEventHandler(async (event) => {
       body: "Handle must only contain alphanumeric characters and underscores",
     };
 
+  if (handle.length < 3)
+    return {
+      status: 500,
+      body: "Handle must be at least 3 characters",
+    };
+
+
   const { data: handleData } = await supabase
     .from("userData")
     .select("handle, email")

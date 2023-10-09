@@ -34,7 +34,7 @@ export default defineEventHandler(async (event) => {
     // Create a new user
     const { error } = await supabase.from("userData").insert({
       id: id,
-      handle: faker.internet.userName(),
+      handle: faker.internet.userName().toLowerCase(),
       full_name: full_name ?? "Anonymous",
       skills: [] as Array<string>,
       interests: [] as Array<string>,
