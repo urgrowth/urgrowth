@@ -43,43 +43,43 @@ function logout() {
         </h1>
         <div class="flex gap-2">
           <button class="btn btn-primary" @click="navigateTo('/profile/edit')">
-            EDIT PROFILE
+            {{ $t("user.profile.edit") }}
           </button>
-          <button class="btn btn-error" @click="logout">SIGN OUT</button>
+          <button class="btn btn-error" @click="logout">{{ $t("user.profile.logout") }}</button>
         </div>
       </div>
       <div class="side-info-container">
         <div class="items-container">
-          <h1>Skills</h1>
+          <h1>{{ $t("user.profile.skills.title") }}</h1>
           <div class="items-wrapper">
             <div class="skill" v-for="skill in userData?.skills">
               {{ skill }}
             </div>
-            <p v-if="!userData?.skills?.length">No skills added yet 😢</p>
+            <p v-if="!userData?.skills?.length">{{ $t("user.profile.skills.empty") }}</p>
           </div>
         </div>
         <div class="items-container">
-          <h1>Interests</h1>
+          <h1>{{ $t("user.profile.interests.title") }}</h1>
           <div class="items-wrapper">
             <div class="interest" v-for="interest in userData?.interests">
               {{ interest }}
             </div>
-            <p v-if="!userData?.interests?.length">No interests added yet 😢</p>
+            <p v-if="!userData?.interests?.length">{{ $t("user.profile.interests.empty") }}</p>
           </div>
         </div>
         <div class="items-container">
-          <h1>Mission</h1>
-          <p>{{ userData?.bio }}</p>
+          <h1>{{ $t("user.profile.bio.title") }}</h1>
+          <p>{{ userData?.bio ?? $t("user.profile.bio.empty") }}</p>
         </div>
       </div>
     </div>
-    <div class="divider"><h1>INTRODUCTION</h1></div>
+    <div class="divider"><h1>{{ $t("user.profile.introduction.title") }}</h1></div>
     <div class="introduction">
       <p>
-        {{ userData?.introduction }}
+        {{ userData?.introduction ?? $t("user.profile.introduction.empty") }}
       </p>
     </div>
-    <div class="divider"><h1>CONNECTIONS</h1></div>
+    <div class="divider"><h1>{{ $t("user.profile.connections") }}</h1></div>
   </div>
 </template>
 

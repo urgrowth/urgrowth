@@ -1,75 +1,84 @@
-# Nuxt 3 Minimal Starter
+<p align="center"><img src="./public/images/logo-card.png" width="512"></p>
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+<p align="center">
+This is the repository for the URGROWTH website. It is built using Nuxt, TailwindCSS and DaisyUI.
+</p>
 
-## Setup
+## 📝 Table of Contents
 
-Make sure to install the dependencies:
+- [📝 Table of Contents](#-table-of-contents)
+- [🙋‍ What is URGROWTH?](#-what-is-urgrowth)
+- [🤔 How we can help you?](#-how-we-can-help-you)
+- [🚀 Getting Started](#-getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the development server](#running-the-development-server)
+  - [Building for production](#building-for-production)
+- [🤝 Contributing](#-contributing)
+- [📝 License](#-license)
+- [💰 Sponsor](#-sponsor)
+
+## 🙋 What is URGROWTH?
+
+We are dedicated to encouraging the youths through our website to set out on a journey of self-discovery and self-empowerment. 
+
+We genuinely think that every person has a distinct identity that is just waiting to be revealed, and we want you to proudly embrace it. 
+
+Our goal is to assist you in realizing your full potential and utilizing your skills and assets so that you can have a positive influence on society. 
+
+Our services are intended to lead you down this transforming path and help you become your greatest self, whether you are a student, a young adult, or anybody else that is seeking personal growth and development. 
+
+Join us in this inspiring endeavor, and let society and yourself benefit from your true identity shining.
+
+## 🤔 How we can help you?
+
+1. We are a medium of creative youths with a passion for personal growth and development, for building a better society, and for making a difference in the world.
+2. We have learning processes that are designed to help you discover your true identity and purpose in life.
+3. We have a community of like-minded people who are willing to help you grow and develop. Such as coaches, mentors, and other youths.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/en/) (>=14.0.0)
+- [PNPM](https://pnpm.io/) (>=6.0.0)
+- [Git](https://git-scm.com/)
+
+### Installation
+
+1. Clone the repository
 
 ```bash
-# npm
-npm install
+git clone https://github.com/urgrowth/web
+```
 
-# pnpm
+2. Install the dependencies
+
+```bash
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+### Running the development server
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
 pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
+### Building for production
 
 ```bash
-# npm
-npm run build
-
-# pnpm
 pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+## 🤝 Contributing
 
-```bash
-# npm
-npm run preview
+See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
-# pnpm
-pnpm run preview
+## 📝 License
 
-# yarn
-yarn preview
+This project is licensed under the [MIT License](./LICENSE)
 
-# bun
-bun run preview
-```
+## 💰 Sponsor
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+If you like this project, please consider [sponsoring us](https://github.com/sponsors/tinarskii) to support our work.
+Or our [Open Collective](https://opencollective.com/urgrowth) if you want to support us in a more transparent way.

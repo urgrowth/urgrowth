@@ -2,7 +2,7 @@
 definePageMeta({
   middleware: ["auth"],
 });
-
+import { location } from "~/data/location.js";
 const user = useSupabaseUser();
 
 const res = await $fetch("/api/getUser", {
@@ -13,6 +13,9 @@ const res = await $fetch("/api/getUser", {
   method: "POST",
 });
 
+const i18n = useI18n();
+const error = ref("")
+const success = ref(false)
 const userData = JSON.parse(res?.body ?? {});
 const newData = reactive({
   full_name: userData?.full_name,
@@ -23,256 +26,43 @@ const newData = reactive({
   introduction: userData?.introduction,
   location: userData?.location,
 });
+const isBtnDisabled = ref(false);
 
 if (res?.status !== 200) {
   alert("Something went wrong");
   navigateTo("/");
 }
-const location = [
-  "",
-  "Thailand",
-  "United States",
-  "Afghanistan",
-  "Albania",
-  "Algeria",
-  "American Samoa",
-  "Andorra",
-  "Angola",
-  "Anguilla",
-  "Antarctica",
-  "Antigua and/or Barbuda",
-  "Argentina",
-  "Armenia",
-  "Aruba",
-  "Australia",
-  "Austria",
-  "Azerbaijan",
-  "Bahamas",
-  "Bahrain",
-  "Bangladesh",
-  "Barbados",
-  "Belarus",
-  "Belgium",
-  "Belize",
-  "Benin",
-  "Bermuda",
-  "Bhutan",
-  "Bolivia",
-  "Bosnia and Herzegovina",
-  "Botswana",
-  "Bouvet Island",
-  "Brazil",
-  "British Indian Ocean Territory",
-  "Brunei Darussalam",
-  "Bulgaria",
-  "Burkina Faso",
-  "Burundi",
-  "Cambodia",
-  "Cameroon",
-  "Canada",
-  "Cape Verde",
-  "Cayman Islands",
-  "Central African Republic",
-  "Chad",
-  "Chile",
-  "China",
-  "Christmas Island",
-  "Cocos (Keeling) Islands",
-  "Colombia",
-  "Comoros",
-  "Congo",
-  "Cook Islands",
-  "Costa Rica",
-  "Croatia (Hrvatska)",
-  "Cuba",
-  "Cyprus",
-  "Czech Republic",
-  "Denmark",
-  "Djibouti",
-  "Dominica",
-  "Dominican Republic",
-  "East Timor",
-  "Ecuador",
-  "Egypt",
-  "El Salvador",
-  "Equatorial Guinea",
-  "Eritrea",
-  "Estonia",
-  "Ethiopia",
-  "Falkland Islands (Malvinas)",
-  "Faroe Islands",
-  "Fiji",
-  "Finland",
-  "France",
-  "France, Metropolitan",
-  "French Guiana",
-  "French Polynesia",
-  "French Southern Territories",
-  "Gabon",
-  "Gambia",
-  "Georgia",
-  "Germany",
-  "Ghana",
-  "Gibraltar",
-  "Greece",
-  "Greenland",
-  "Grenada",
-  "Guadeloupe",
-  "Guam",
-  "Guatemala",
-  "Guinea",
-  "Guinea-Bissau",
-  "Guyana",
-  "Haiti",
-  "Heard and Mc Donald Islands",
-  "Honduras",
-  "Hong Kong (China)",
-  "Hungary",
-  "Iceland",
-  "India",
-  "Indonesia",
-  "Iran (Islamic Republic of)",
-  "Iraq",
-  "Ireland",
-  "Israel",
-  "Italy",
-  "Ivory Coast",
-  "Jamaica",
-  "Japan",
-  "Jordan",
-  "Kazakhstan",
-  "Kenya",
-  "Kiribati",
-  "Korea, Democratic People's Republic of",
-  "Korea, Republic of",
-  "Kuwait",
-  "Kyrgyzstan",
-  "Lao People's Democratic Republic",
-  "Latvia",
-  "Lebanon",
-  "Lesotho",
-  "Liberia",
-  "Libyan Arab Jamahiriya",
-  "Liechtenstein",
-  "Lithuania",
-  "Luxembourg",
-  "Macau (China)",
-  "Macedonia",
-  "Madagascar",
-  "Malawi",
-  "Malaysia",
-  "Maldives",
-  "Mali",
-  "Malta",
-  "Marshall Islands",
-  "Martinique",
-  "Mauritania",
-  "Mauritius",
-  "Mayotte",
-  "Mexico",
-  "Micronesia, Federated States of",
-  "Moldova, Republic of",
-  "Monaco",
-  "Mongolia",
-  "Montserrat",
-  "Morocco",
-  "Mozambique",
-  "Myanmar",
-  "Namibia",
-  "Nauru",
-  "Nepal",
-  "Netherlands",
-  "Netherlands Antilles",
-  "New Caledonia",
-  "New Zealand",
-  "Nicaragua",
-  "Niger",
-  "Nigeria",
-  "Niue",
-  "Norfolk Island",
-  "Northern Mariana Islands",
-  "Norway",
-  "Oman",
-  "Pakistan",
-  "Palau",
-  "Panama",
-  "Papua New Guinea",
-  "Paraguay",
-  "Peru",
-  "Philippines",
-  "Pitcairn",
-  "Poland",
-  "Portugal",
-  "Puerto Rico",
-  "Qatar",
-  "Reunion",
-  "Romania",
-  "Russian Federation",
-  "Rwanda",
-  "Saint Kitts and Nevis",
-  "Saint Lucia",
-  "Saint Vincent and the Grenadines",
-  "Samoa",
-  "San Marino",
-  "Sao Tome and Principe",
-  "Saudi Arabia",
-  "Senegal",
-  "Seychelles",
-  "Sierra Leone",
-  "Singapore",
-  "Slovakia",
-  "Slovenia",
-  "Solomon Islands",
-  "Somalia",
-  "South Africa",
-  "South Georgia South Sandwich Islands",
-  "Spain",
-  "Sri Lanka",
-  "St. Helena",
-  "St. Pierre and Miquelon",
-  "Sudan",
-  "Suriname",
-  "Svalbard and Jan Mayen Islands",
-  "Swaziland",
-  "Sweden",
-  "Switzerland",
-  "Syrian Arab Republic",
-  "Taiwan",
-  "Tajikistan",
-  "Tanzania, United Republic of",
-  "Togo",
-  "Tokelau",
-  "Tonga",
-  "Trinidad and Tobago",
-  "Tunisia",
-  "Turkey",
-  "Turkmenistan",
-  "Turks and Caicos Islands",
-  "Tuvalu",
-  "Uganda",
-  "Ukraine",
-  "United Arab Emirates",
-  "United Kingdom",
-  "United States minor outlying islands",
-  "Uruguay",
-  "Uzbekistan",
-  "Vanuatu",
-  "Vatican City State",
-  "Venezuela",
-  "Vietnam",
-  "Virgin Islands (British)",
-  "Virgin Islands (U.S.)",
-  "Wallis and Futuna Islands",
-  "Western Sahara",
-  "Yemen",
-  "Yugoslavia",
-  "Zaire",
-  "Zambia",
-  "Zimbabwe",
-];
 
 function submit(e) {
   e.preventDefault();
+
+  const skillsFiltered = newData.skills.filter((skill) => skill !== "");
+  const interestsFiltered = newData.interests.filter(
+    (interest) => interest !== "",
+  );
+
+  if (newData.handle.length > 32)
+    return error.value = i18n.t("user.update.handle.maxLength");
+  if (newData.full_name.length > 64)
+    return error.value = i18n.t("user.update.fullName.maxLength");
+  if (skillsFiltered.length > 5)
+    return error.value = i18n.t("user.update.skills.maxLength");
+  if (interestsFiltered.length > 5)
+    return error.value = i18n.t("user.update.interests.maxLength");
+  if (newData.bio.length > 256)
+    return error.value = i18n.t("user.update.bio.maxLength");
+  if (newData.introduction.length > 2048)
+    return error.value = i18n.t("user.update.introduction.maxLength");
+
+  if (!newData.handle) return error.value = i18n.t("user.update.handle.required");
+  if (!newData.full_name) return error.value = i18n.t("user.update.fullName.required");
+
+  if (!newData.handle?.match(/^[a-zA-Z0-9_]+$/))
+    return error.value = i18n.t("user.update.handle.pattern");
+
+
+  if (newData.handle.length < 3)
+    return error.value = i18n.t("user.update.handle.minLength");
 
   $fetch("/api/updateUser", {
     body: {
@@ -289,16 +79,24 @@ function submit(e) {
     method: "POST",
   }).then((res) => {
     if (res.status === 200) {
-      alert("Profile updated!");
-      return navigateTo("/profile");
+      success.value = true
     } else {
-      alert(res.body.toString());
+      if (res.errMsg?.length)
+        return error.value = i18n.t(res.errMsg);
+      error.value = res.body.toString();
     }
   });
+}
+
+function closeErrorDialog() {
+  error.value = "";
+  isBtnDisabled.value = false;
 }
 </script>
 
 <template>
+  <Modal :show="error?.length > 0" :title="$t('modal.title.error')" :description="error" end="ok" :handle-on-close="closeErrorDialog" />
+  <Modal :show="success" :title="$t('modal.title.success')" :description="$t('user.update.success')" end="ok" :handle-on-close="() => navigateTo('/profile')" />
   <form @submit.prevent="submit">
     <div class="flex flex-col gap-4 px-4 py-2 md:px-12 md:py-6">
       <div class="page-container">
@@ -315,7 +113,7 @@ function submit(e) {
             "
           />
           <div class="input-container">
-            <span class="label-text">Full name</span>
+            <span class="label-text">{{ $t("user.profile.fullName") }}</span>
             <input
               class="full_name input input-bordered"
               name="full_name"
@@ -324,12 +122,11 @@ function submit(e) {
               maxlength="64"
             />
             <span class="label-text-alt"
-              >{{ 64 - newData.full_name?.length }} characters left</span
-            >
+              >{{ 64 - newData.full_name?.length }} {{ $t("user.edit.charLeft") }}</span>
           </div>
           <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
             <div class="input-container">
-              <span class="label-text">Handle (username)</span>
+              <span class="label-text">{{ $t("user.profile.handle") }}</span>
               <input
                 class="handle input input-bordered input-sm"
                 name="handle"
@@ -338,11 +135,11 @@ function submit(e) {
                 maxlength="32"
               />
               <span class="label-text-alt"
-                >{{ 32 - newData.handle?.length }} characters left</span
+                >{{ 32 - newData.handle?.length }} {{ $t("user.edit.charLeft") }}</span
               >
             </div>
             <div class="input-container">
-              <span class="label-text">Location</span>
+              <span class="label-text">{{ $t("user.profile.location") }}</span>
               <select
                 class="input input-bordered input-sm"
                 name="location"
@@ -355,18 +152,19 @@ function submit(e) {
           <div class="flex gap-2">
             <button
               class="btn btn-success"
-              @click="(e) => (e.target.disabled = true)"
+              v-bind:disabled="isBtnDisabled"
+              @click="isBtnDisabled = true"
             >
-              SAVE
+              {{ $t("user.edit.save") }}
             </button>
             <span class="btn btn-error" @click="navigateTo('/profile')"
-              >CANCEL</span
+              >{{ $t("user.edit.cancel") }}</span
             >
           </div>
         </div>
         <div class="side-info-container">
           <div class="items-container">
-            <h1>Skills</h1>
+            <h1>{{ $t("user.profile.skills.title") }}</h1>
             <div class="items-wrapper">
               <div class="input-container w-full">
                 <input
@@ -384,13 +182,13 @@ function submit(e) {
                   "
                 />
                 <span class="label-text-alt"
-                  >{{ 5 - newData.skills.length }} tags left</span
+                  >{{ 5 - newData.skills.length }} {{ $t("user.edit.tagsLeft") }}</span
                 >
               </div>
             </div>
           </div>
           <div class="items-container">
-            <h1>Interests</h1>
+            <h1>{{ $t("user.profile.interests.title") }}</h1>
             <div class="items-wrapper">
               <div class="input-container w-full">
                 <input
@@ -405,13 +203,12 @@ function submit(e) {
                   placeholder="Gaming, Content Creation, Music Producing..."
                 />
                 <span class="label-text-alt"
-                  >{{ 5 - newData.interests.length }} tags left</span
-                >
+                  >{{ 5 - newData.interests.length }} {{ $t("user.edit.tagsLeft") }}</span>
               </div>
             </div>
           </div>
           <div class="items-container">
-            <h1>Mission</h1>
+            <h1>{{ $t("user.profile.bio.title") }}</h1>
             <input
               class="input input-bordered w-full"
               name="bio"
@@ -420,12 +217,11 @@ function submit(e) {
               v-model="newData.bio"
             />
             <span class="label-text-alt"
-              >{{ 256 - newData.bio?.length }} characters left</span
-            >
+              >{{ 256 - newData.bio?.length }} {{ $t("user.edit.charLeft") }}</span>
           </div>
         </div>
       </div>
-      <div class="divider"><h1>INTRODUCTION</h1></div>
+      <div class="divider"><h1>{{ $t("user.profile.introduction.title") }}</h1></div>
       <div class="introduction">
         <textarea
           class="input input-bordered h-[50vh] w-full"
@@ -436,11 +232,11 @@ function submit(e) {
         >
         </textarea>
         <span class="label-text-alt"
-          >{{ 2048 - newData.introduction?.length }} characters left</span
+          >{{ 2048 - newData.introduction?.length }} {{ $t("user.edit.charLeft") }}</span
         >
       </div>
       <div class="divider">
-        <h1>CONNECTIONS</h1>
+        <h1>{{ $t("user.profile.connections") }}</h1>
         <!-- Let's just hope we have another backend developer -->
       </div>
     </div>
