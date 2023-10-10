@@ -4,7 +4,7 @@ import { faker } from "@faker-js/faker";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
-  const { id, handle, full_name, email } = body;
+  const { id, handle, full_name, email, createUser } = body;
   const supabase = await serverSupabaseClient(event);
 
   const { data } = await supabase
@@ -30,7 +30,7 @@ export default defineEventHandler(async (event) => {
 
   const user = data as IUser | null;
 
-  if (!user) {
+  if (!user && createUser) {
     // Create a new user
     const { error } = await supabase.from("userData").insert({
       id: id,
@@ -42,6 +42,8 @@ export default defineEventHandler(async (event) => {
     } as never);
 
     if (error) return { status: 500, body: error.message };
+  } else if (!user && !createUser) {
+    return { status: 404, body: "User not found" };
   }
 
   const md5 = crypto

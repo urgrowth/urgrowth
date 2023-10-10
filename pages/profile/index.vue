@@ -11,6 +11,7 @@ const res = await $fetch("/api/getUser", {
     id: user.value?.id,
     full_name: user.value?.user_metadata?.full_name,
     email: user.value?.email,
+    createUser: true,
   },
   method: "POST",
 });
