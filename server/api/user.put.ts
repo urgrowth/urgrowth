@@ -1,5 +1,4 @@
 import { serverSupabaseClient } from "#supabase/server";
-import crypto from "crypto";
 import { faker } from "@faker-js/faker";
 
 export default defineEventHandler(async (event) => {
@@ -7,14 +6,17 @@ export default defineEventHandler(async (event) => {
   const { id, full_name, email } = body;
   const supabase = await serverSupabaseClient(event);
 
-  const { data, error } = await supabase.from("userData").insert({
-    id: id,
-    handle: faker.internet.userName().toLowerCase(),
-    full_name: full_name ?? "Anonymous",
-    skills: [] as Array<string>,
-    interests: [] as Array<string>,
-    email: email,
-  } as never).single();
+  const { data, error } = await supabase
+    .from("userData")
+    .insert({
+      id: id,
+      handle: faker.internet.userName().toLowerCase(),
+      full_name: full_name ?? "Anonymous",
+      skills: [] as Array<string>,
+      interests: [] as Array<string>,
+      email: email,
+    } as never)
+    .single();
 
   if (error) return { status: 500, body: error.message };
 

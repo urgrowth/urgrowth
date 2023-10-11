@@ -13,7 +13,7 @@ let { body: data } = await $fetch("/api/user", {
     email: user.value?.email,
   },
   method: "GET",
-})
+});
 
 if (!data) {
   const res = await $fetch("/api/user", {
@@ -36,7 +36,9 @@ if (!data) {
   userData = reactive(JSON.parse(data));
 }
 
-userData.avatarURL = `https://www.gravatar.com/avatar/${md5(userData.email)}?d=retro&size=128`;
+userData.avatarURL = `https://www.gravatar.com/avatar/${md5(
+  userData.email,
+)}?d=retro&size=128`;
 
 function logout() {
   supabase.auth.signOut();
@@ -58,7 +60,9 @@ function logout() {
           <button class="btn btn-primary" @click="navigateTo('/profile/edit')">
             {{ $t("user.profile.edit") }}
           </button>
-          <button class="btn btn-error" @click="logout">{{ $t("user.profile.logout") }}</button>
+          <button class="btn btn-error" @click="logout">
+            {{ $t("user.profile.logout") }}
+          </button>
         </div>
       </div>
       <div class="side-info-container">
@@ -68,7 +72,9 @@ function logout() {
             <div class="skill" v-for="skill in userData?.skills">
               {{ skill }}
             </div>
-            <p v-if="!userData?.skills?.length">{{ $t("user.profile.skills.empty") }}</p>
+            <p v-if="!userData?.skills?.length">
+              {{ $t("user.profile.skills.empty") }}
+            </p>
           </div>
         </div>
         <div class="items-container">
@@ -77,7 +83,9 @@ function logout() {
             <div class="interest" v-for="interest in userData?.interests">
               {{ interest }}
             </div>
-            <p v-if="!userData?.interests?.length">{{ $t("user.profile.interests.empty") }}</p>
+            <p v-if="!userData?.interests?.length">
+              {{ $t("user.profile.interests.empty") }}
+            </p>
           </div>
         </div>
         <div class="items-container">
@@ -86,13 +94,17 @@ function logout() {
         </div>
       </div>
     </div>
-    <div class="divider"><h1>{{ $t("user.profile.introduction.title") }}</h1></div>
+    <div class="divider">
+      <h1>{{ $t("user.profile.introduction.title") }}</h1>
+    </div>
     <div class="introduction">
       <p>
         {{ userData?.introduction ?? $t("user.profile.introduction.empty") }}
       </p>
     </div>
-    <div class="divider"><h1>{{ $t("user.profile.connections") }}</h1></div>
+    <div class="divider">
+      <h1>{{ $t("user.profile.connections") }}</h1>
+    </div>
   </div>
 </template>
 

@@ -14,9 +14,9 @@ const res = await $fetch("/api/user", {
 });
 
 const i18n = useI18n();
-const error = ref("")
-const success = ref(false)
-const isBtnDisabled = computed(() => error.value.length > 0 || success.value)
+const error = ref("");
+const success = ref(false);
+const isBtnDisabled = computed(() => error.value.length > 0 || success.value);
 
 if (res?.status !== 200) {
   createError({
@@ -40,7 +40,8 @@ const newDataCopy = JSON.parse(JSON.stringify(newData));
 function submit(e) {
   e.preventDefault();
 
-  if (JSON.stringify(newData) === JSON.stringify(newDataCopy)) return success.value = true
+  if (JSON.stringify(newData) === JSON.stringify(newDataCopy))
+    return (success.value = true);
 
   const skillsFiltered = newData.skills.filter((skill) => skill !== "");
   const interestsFiltered = newData.interests.filter(
@@ -48,27 +49,28 @@ function submit(e) {
   );
 
   if (newData.handle.length > 32)
-    return error.value = i18n.t("user.update.handle.maxLength");
+    return (error.value = i18n.t("user.update.handle.maxLength"));
   if (newData.full_name.length > 64)
-    return error.value = i18n.t("user.update.fullName.maxLength");
+    return (error.value = i18n.t("user.update.fullName.maxLength"));
   if (skillsFiltered.length > 5)
-    return error.value = i18n.t("user.update.skills.maxLength");
+    return (error.value = i18n.t("user.update.skills.maxLength"));
   if (interestsFiltered.length > 5)
-    return error.value = i18n.t("user.update.interests.maxLength");
+    return (error.value = i18n.t("user.update.interests.maxLength"));
   if (newData.bio.length > 256)
-    return error.value = i18n.t("user.update.bio.maxLength");
+    return (error.value = i18n.t("user.update.bio.maxLength"));
   if (newData.introduction.length > 2048)
-    return error.value = i18n.t("user.update.introduction.maxLength");
+    return (error.value = i18n.t("user.update.introduction.maxLength"));
 
-  if (!newData.handle) return error.value = i18n.t("user.update.handle.required");
-  if (!newData.full_name) return error.value = i18n.t("user.update.fullName.required");
+  if (!newData.handle)
+    return (error.value = i18n.t("user.update.handle.required"));
+  if (!newData.full_name)
+    return (error.value = i18n.t("user.update.fullName.required"));
 
   if (!newData.handle?.match(/^[a-zA-Z0-9_]+$/))
-    return error.value = i18n.t("user.update.handle.pattern");
-
+    return (error.value = i18n.t("user.update.handle.pattern"));
 
   if (newData.handle.length < 3)
-    return error.value = i18n.t("user.update.handle.minLength");
+    return (error.value = i18n.t("user.update.handle.minLength"));
 
   $fetch("/api/user", {
     body: {
@@ -85,10 +87,9 @@ function submit(e) {
     method: "PATCH",
   }).then((res) => {
     if (res.status === 200) {
-      success.value = true
+      success.value = true;
     } else {
-      if (res.errMsg?.length)
-        return error.value = i18n.t(res.errMsg);
+      if (res.errMsg?.length) return (error.value = i18n.t(res.errMsg));
       error.value = res.body.toString();
     }
   });
@@ -101,8 +102,20 @@ function closeErrorDialog() {
 </script>
 
 <template>
-  <Modal :show="error?.length > 0" :title="$t('modal.title.error')" :description="error" end="ok" :handle-on-close="closeErrorDialog" />
-  <Modal :show="success" :title="$t('modal.title.success')" :description="$t('user.update.success')" end="ok" :handle-on-close="() => navigateTo('/profile')" />
+  <Modal
+    :show="error?.length > 0"
+    :title="$t('modal.title.error')"
+    :description="error"
+    end="ok"
+    :handle-on-close="closeErrorDialog"
+  />
+  <Modal
+    :show="success"
+    :title="$t('modal.title.success')"
+    :description="$t('user.update.success')"
+    end="ok"
+    :handle-on-close="() => navigateTo('/profile')"
+  />
   <form @submit.prevent="submit">
     <div class="flex flex-col gap-4 px-4 py-2 md:px-12 md:py-6">
       <div class="page-container">
@@ -128,7 +141,9 @@ function closeErrorDialog() {
               maxlength="64"
             />
             <span class="label-text-alt"
-              >{{ 64 - newData.full_name?.length }} {{ $t("user.edit.charLeft") }}</span>
+              >{{ 64 - newData.full_name?.length }}
+              {{ $t("user.edit.charLeft") }}</span
+            >
           </div>
           <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
             <div class="input-container">
@@ -141,7 +156,8 @@ function closeErrorDialog() {
                 maxlength="32"
               />
               <span class="label-text-alt"
-                >{{ 32 - newData.handle?.length }} {{ $t("user.edit.charLeft") }}</span
+                >{{ 32 - newData.handle?.length }}
+                {{ $t("user.edit.charLeft") }}</span
               >
             </div>
             <div class="input-container">
@@ -163,9 +179,9 @@ function closeErrorDialog() {
             >
               {{ $t("user.edit.save") }}
             </button>
-            <span class="btn btn-error" @click="navigateTo('/profile')"
-              >{{ $t("user.edit.cancel") }}</span
-            >
+            <span class="btn btn-error" @click="navigateTo('/profile')">{{
+              $t("user.edit.cancel")
+            }}</span>
           </div>
         </div>
         <div class="side-info-container">
@@ -188,7 +204,8 @@ function closeErrorDialog() {
                   "
                 />
                 <span class="label-text-alt"
-                  >{{ 5 - newData.skills.length }} {{ $t("user.edit.tagsLeft") }}</span
+                  >{{ 5 - newData.skills.length }}
+                  {{ $t("user.edit.tagsLeft") }}</span
                 >
               </div>
             </div>
@@ -209,7 +226,9 @@ function closeErrorDialog() {
                   placeholder="Gaming, Content Creation, Music Producing..."
                 />
                 <span class="label-text-alt"
-                  >{{ 5 - newData.interests.length }} {{ $t("user.edit.tagsLeft") }}</span>
+                  >{{ 5 - newData.interests.length }}
+                  {{ $t("user.edit.tagsLeft") }}</span
+                >
               </div>
             </div>
           </div>
@@ -223,11 +242,15 @@ function closeErrorDialog() {
               v-model="newData.bio"
             />
             <span class="label-text-alt"
-              >{{ 256 - newData.bio?.length }} {{ $t("user.edit.charLeft") }}</span>
+              >{{ 256 - newData.bio?.length }}
+              {{ $t("user.edit.charLeft") }}</span
+            >
           </div>
         </div>
       </div>
-      <div class="divider"><h1>{{ $t("user.profile.introduction.title") }}</h1></div>
+      <div class="divider">
+        <h1>{{ $t("user.profile.introduction.title") }}</h1>
+      </div>
       <div class="introduction">
         <textarea
           class="input input-bordered h-[50vh] w-full"
@@ -238,7 +261,8 @@ function closeErrorDialog() {
         >
         </textarea>
         <span class="label-text-alt"
-          >{{ 2048 - newData.introduction?.length }} {{ $t("user.edit.charLeft") }}</span
+          >{{ 2048 - newData.introduction?.length }}
+          {{ $t("user.edit.charLeft") }}</span
         >
       </div>
       <div class="divider">

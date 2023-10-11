@@ -20,13 +20,13 @@ This is the repository for the URGROWTH website. It is built using Nuxt, Tailwin
 
 ## 🙋 What is URGROWTH?
 
-We are dedicated to encouraging the youths through our website to set out on a journey of self-discovery and self-empowerment. 
+We are dedicated to encouraging the youths through our website to set out on a journey of self-discovery and self-empowerment.
 
-We genuinely think that every person has a distinct identity that is just waiting to be revealed, and we want you to proudly embrace it. 
+We genuinely think that every person has a distinct identity that is just waiting to be revealed, and we want you to proudly embrace it.
 
-Our goal is to assist you in realizing your full potential and utilizing your skills and assets so that you can have a positive influence on society. 
+Our goal is to assist you in realizing your full potential and utilizing your skills and assets so that you can have a positive influence on society.
 
-Our services are intended to lead you down this transforming path and help you become your greatest self, whether you are a student, a young adult, or anybody else that is seeking personal growth and development. 
+Our services are intended to lead you down this transforming path and help you become your greatest self, whether you are a student, a young adult, or anybody else that is seeking personal growth and development.
 
 Join us in this inspiring endeavor, and let society and yourself benefit from your true identity shining.
 

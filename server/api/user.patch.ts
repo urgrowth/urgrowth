@@ -21,7 +21,8 @@ export default defineEventHandler(async (event) => {
     .not("id", "eq", id)
     .single();
 
-  if (handleData?.handle) return { status: 500, errMsg: "user.update.handle.taken" };
+  if (handleData?.handle)
+    return { status: 500, errMsg: "user.update.handle.taken" };
 
   // interface IUserUpdate {
   //   handle: string;

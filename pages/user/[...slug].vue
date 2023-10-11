@@ -28,7 +28,9 @@ const data = res.status === 200 ? JSON.parse(res?.body) : null;
             <div class="skill" v-for="skill in data?.skills">
               {{ skill }}
             </div>
-            <p v-if="!data.skills?.length">{{ $t("user.profile.skills.empty") }}</p>
+            <p v-if="!data.skills?.length">
+              {{ $t("user.profile.skills.empty") }}
+            </p>
           </div>
         </div>
         <div class="items-container">
@@ -37,25 +39,34 @@ const data = res.status === 200 ? JSON.parse(res?.body) : null;
             <div class="interest" v-for="interest in data?.interests">
               {{ interest }}
             </div>
-            <p v-if="!data.interests?.length">{{ $t("user.profile.interests.empty") }}</p>
+            <p v-if="!data.interests?.length">
+              {{ $t("user.profile.interests.empty") }}
+            </p>
           </div>
         </div>
         <div class="items-container">
           <h1>{{ $t("user.profile.bio.title") }}</h1>
-          <p>{{ data.bio?.length ? data.bio : $t("user.profile.bio.empty") }}</p>
+          <p>
+            {{ data.bio?.length ? data.bio : $t("user.profile.bio.empty") }}
+          </p>
         </div>
       </div>
     </div>
-    <div class="divider"><h1>{{ $t("user.profile.introduction.title") }}</h1></div>
+    <div class="divider">
+      <h1>{{ $t("user.profile.introduction.title") }}</h1>
+    </div>
     <div class="introduction">
       <p>
         {{
-          data.introduction?.length ? data.introduction :
-            $t("user.profile.introduction.empty")
+          data.introduction?.length
+            ? data.introduction
+            : $t("user.profile.introduction.empty")
         }}
       </p>
     </div>
-    <div class="divider"><h1>{{ $t("user.profile.connections") }}</h1></div>
+    <div class="divider">
+      <h1>{{ $t("user.profile.connections") }}</h1>
+    </div>
   </div>
   <div class="grid w-full grid-cols-1 place-items-center" v-else>
     <Modal

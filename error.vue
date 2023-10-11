@@ -23,9 +23,7 @@ const error = useError();
           {{ error?.message }}
         </p>
       </div>
-      <button class="btn btn-primary" @click="navigateTo('/')">
-        Go home
-      </button>
+      <button class="btn btn-primary" @click="navigateTo('/')">Go home</button>
     </div>
   </div>
 </template>
