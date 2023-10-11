@@ -1,10 +1,9 @@
 import { serverSupabaseClient } from "#supabase/server";
 import crypto from "crypto";
-import { faker } from "@faker-js/faker";
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
-  const { id, handle, full_name, email, createUser } = body;
+  const query = getQuery(event);
+  const { id, handle, email } = query;
   const supabase = await serverSupabaseClient(event);
 
   const { data } = await supabase
@@ -30,25 +29,11 @@ export default defineEventHandler(async (event) => {
 
   const user = data as IUser | null;
 
-  if (!user && createUser) {
-    // Create a new user
-    const { error } = await supabase.from("userData").insert({
-      id: id,
-      handle: faker.internet.userName().toLowerCase(),
-      full_name: full_name ?? "Anonymous",
-      skills: [] as Array<string>,
-      interests: [] as Array<string>,
-      email: email,
-    } as never);
-
-    if (error) return { status: 500, body: error.message };
-  } else if (!user && !createUser) {
-    return { status: 404, body: "User not found" };
-  }
+  if (!user) return { status: 500, body: "User not found" };
 
   const md5 = crypto
     .createHash("md5")
-    .update(Buffer.from(email ?? user?.email ?? ""))
+    .update(Buffer.from(user.email ?? email ?? ""))
     .digest("hex");
   user!.avatarURL = `https://www.gravatar.com/avatar/${md5}?d=retro&size=128`;
 

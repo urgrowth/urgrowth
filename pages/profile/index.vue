@@ -3,27 +3,35 @@ definePageMeta({
   middleware: ["auth"],
 });
 
+import { md5 } from "~/lib/md5.js";
 const user = useSupabaseUser();
 const supabase = useSupabaseClient();
+let userData;
 
-const res = await $fetch("/api/getUser", {
-  body: {
-    id: user.value?.id,
-    full_name: user.value?.user_metadata?.full_name,
-    email: user.value?.email,
-    createUser: true,
-  },
-  method: "POST",
-});
+let { data, error } = await supabase.from('userData').select('*').single()
 
-if (res?.status !== 200) {
-  createError({
-    statusCode: res?.status,
-    message: res?.body,
+if (!data) {
+  const res = await $fetch("/api/user", {
+    body: {
+      id: user.value?.id,
+      full_name: user.value?.user_metadata?.full_name,
+      email: user.value?.email,
+      createUser: true,
+    },
+    method: "PUT",
   });
+  if (res?.status !== 200) {
+    createError({
+      statusCode: res?.status,
+      message: res?.body,
+    });
+  }
+  userData = reactive(JSON.parse(res?.body ?? {}));
+} else {
+  userData = reactive(data);
 }
 
-const userData = JSON.parse(res?.body ?? {});
+userData.avatarURL = `https://www.gravatar.com/avatar/${md5(userData.email)}?d=retro&size=128`;
 
 function logout() {
   supabase.auth.signOut();

@@ -111,6 +111,9 @@ export default defineI18nConfig(() => ({
             empty: "🤔 We don't know about them... but we think they have a big dream",
           }
         }
+      },
+      footer: {
+        notice: "© 2023 URGROWTH — All rights reserved",
       }
     },
     th: {
@@ -213,6 +216,9 @@ export default defineI18nConfig(() => ({
             empty: "🤔 เราไม่รู้เกี่ยวกับเขา... แต่เขาคงมีความฝันอันยิ่งใหญ่",
           }
         }
+      },
+      footer: {
+        notice: "© 2023 URGROWTH — สงวนลิขสิทธิ์ทุกประการ",
       }
     },
   },

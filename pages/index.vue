@@ -1,6 +1,5 @@
 <template>
   <div class="page-container">
-    <!-- Banner -->
     <div class="banner-container">
       <div class="title-container">
         <div class="text-wrapper">

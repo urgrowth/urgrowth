@@ -1,11 +1,11 @@
 <script setup lang="ts">
 const slug = useRoute().params.slug;
 
-const res = await $fetch("/api/getUser", {
-  body: {
+const res = await $fetch("/api/user", {
+  query: {
     handle: slug,
   },
-  method: "POST",
+  method: "GET",
 });
 const data = res.status === 200 ? JSON.parse(res?.body) : null;
 </script>
@@ -42,7 +42,7 @@ const data = res.status === 200 ? JSON.parse(res?.body) : null;
         </div>
         <div class="items-container">
           <h1>{{ $t("user.profile.bio.title") }}</h1>
-          <p>{{ data.bio ?? $t("user.profile.bio.empty") }}</p>
+          <p>{{ data.bio?.length ? data.bio : $t("user.profile.bio.empty") }}</p>
         </div>
       </div>
     </div>
@@ -50,7 +50,7 @@ const data = res.status === 200 ? JSON.parse(res?.body) : null;
     <div class="introduction">
       <p>
         {{
-          data.introduction ??
+          data.introduction?.length ? data.introduction :
             $t("user.profile.introduction.empty")
         }}
       </p>

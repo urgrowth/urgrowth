@@ -5,17 +5,26 @@ definePageMeta({
 import { location } from "~/data/location.js";
 const user = useSupabaseUser();
 
-const res = await $fetch("/api/getUser", {
-  body: {
+const res = await $fetch("/api/user", {
+  query: {
     id: user.value?.id,
     email: user.value?.email,
   },
-  method: "POST",
+  method: "GET",
 });
 
 const i18n = useI18n();
 const error = ref("")
 const success = ref(false)
+const isBtnDisabled = computed(() => error.value.length > 0 || success.value)
+
+if (res?.status !== 200) {
+  createError({
+    statusCode: res?.status,
+    message: res?.body,
+  });
+}
+
 const userData = JSON.parse(res?.body ?? {});
 const newData = reactive({
   full_name: userData?.full_name,
@@ -26,15 +35,12 @@ const newData = reactive({
   introduction: userData?.introduction,
   location: userData?.location,
 });
-const isBtnDisabled = ref(false);
-
-if (res?.status !== 200) {
-  alert("Something went wrong");
-  navigateTo("/");
-}
+const newDataCopy = JSON.parse(JSON.stringify(newData));
 
 function submit(e) {
   e.preventDefault();
+
+  if (JSON.stringify(newData) === JSON.stringify(newDataCopy)) return success.value = true
 
   const skillsFiltered = newData.skills.filter((skill) => skill !== "");
   const interestsFiltered = newData.interests.filter(
@@ -64,7 +70,7 @@ function submit(e) {
   if (newData.handle.length < 3)
     return error.value = i18n.t("user.update.handle.minLength");
 
-  $fetch("/api/updateUser", {
+  $fetch("/api/user", {
     body: {
       id: user.value?.id,
       email: user.value?.email,
@@ -76,7 +82,7 @@ function submit(e) {
       introduction: newData.introduction,
       location: newData.location,
     },
-    method: "POST",
+    method: "PATCH",
   }).then((res) => {
     if (res.status === 200) {
       success.value = true
