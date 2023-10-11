@@ -5,10 +5,15 @@ definePageMeta({
 
 import { md5 } from "~/lib/md5.js";
 const user = useSupabaseUser();
-const supabase = useSupabaseClient();
 let userData;
 
-let { data, error } = await supabase.from('userData').select('*').single()
+let { body: data } = await $fetch("/api/user", {
+  query: {
+    id: user.value?.id,
+    email: user.value?.email,
+  },
+  method: "GET",
+})
 
 if (!data) {
   const res = await $fetch("/api/user", {
@@ -28,7 +33,7 @@ if (!data) {
   }
   userData = reactive(JSON.parse(res?.body ?? {}));
 } else {
-  userData = reactive(data);
+  userData = reactive(JSON.parse(data));
 }
 
 userData.avatarURL = `https://www.gravatar.com/avatar/${md5(userData.email)}?d=retro&size=128`;
