@@ -5,6 +5,7 @@ definePageMeta({
 
 import { md5 } from "~/lib/md5.js";
 const user = useSupabaseUser();
+const supabase = useSupabaseClient();
 let userData;
 
 let { body: data } = await $fetch("/api/user", {
