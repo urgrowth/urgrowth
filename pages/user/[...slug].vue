@@ -11,63 +11,11 @@ const data = res.status === 200 ? JSON.parse(res?.body) : null;
 </script>
 
 <template>
-  <div
-    class="flex flex-col gap-4 px-4 py-2 md:px-12 md:py-6"
+  <UserCard
     v-if="data && res.status === 200"
-  >
-    <div class="page-container">
-      <div class="profile-container">
-        <img :src="data.avatarURL" alt="avatar" class="icon" />
-        <h1 class="full_name">{{ data.full_name }}</h1>
-        <h1 class="handle">@{{ data.handle }}</h1>
-      </div>
-      <div class="side-info-container">
-        <div class="items-container">
-          <h1>{{ $t("user.profile.skills.title") }}</h1>
-          <div class="items-wrapper">
-            <div class="skill" v-for="skill in data?.skills">
-              {{ skill }}
-            </div>
-            <p v-if="!data.skills?.length">
-              {{ $t("user.profile.skills.empty") }}
-            </p>
-          </div>
-        </div>
-        <div class="items-container">
-          <h1>{{ $t("user.profile.interests.title") }}</h1>
-          <div class="items-wrapper">
-            <div class="interest" v-for="interest in data?.interests">
-              {{ interest }}
-            </div>
-            <p v-if="!data.interests?.length">
-              {{ $t("user.profile.interests.empty") }}
-            </p>
-          </div>
-        </div>
-        <div class="items-container">
-          <h1>{{ $t("user.profile.bio.title") }}</h1>
-          <p>
-            {{ data.bio?.length ? data.bio : $t("user.profile.bio.empty") }}
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="divider">
-      <h1>{{ $t("user.profile.introduction.title") }}</h1>
-    </div>
-    <div class="introduction">
-      <p>
-        {{
-          data.introduction?.length
-            ? data.introduction
-            : $t("user.profile.introduction.empty")
-        }}
-      </p>
-    </div>
-    <div class="divider">
-      <h1>{{ $t("user.profile.connections") }}</h1>
-    </div>
-  </div>
+    :data="data"
+    :show-profile-buttons="false"
+  />
   <div class="grid w-full grid-cols-1 place-items-center" v-else>
     <Modal
       :title="$t('modal.title.error')"

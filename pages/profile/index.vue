@@ -48,65 +48,12 @@ function logout() {
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 px-4 py-2 md:px-12 md:py-6">
-    <div class="page-container">
-      <div class="profile-container">
-        <img :src="userData?.avatarURL" alt="avatar" class="icon" />
-        <h1 class="full_name">{{ userData?.full_name }}</h1>
-        <h1 class="handle">
-          @{{ userData?.handle }}
-          {{ userData?.location && " • " + userData?.location }}
-        </h1>
-        <div class="flex gap-2">
-          <button class="btn btn-primary" @click="navigateTo('/profile/edit')">
-            {{ $t("user.profile.edit") }}
-          </button>
-          <button class="btn btn-error" @click="logout">
-            {{ $t("user.profile.logout") }}
-          </button>
-        </div>
-      </div>
-      <div class="side-info-container">
-        <div class="items-container">
-          <h1>{{ $t("user.profile.skills.title") }}</h1>
-          <div class="items-wrapper">
-            <div class="skill" v-for="skill in userData?.skills">
-              {{ skill }}
-            </div>
-            <p v-if="!userData?.skills?.length">
-              {{ $t("user.profile.skills.empty") }}
-            </p>
-          </div>
-        </div>
-        <div class="items-container">
-          <h1>{{ $t("user.profile.interests.title") }}</h1>
-          <div class="items-wrapper">
-            <div class="interest" v-for="interest in userData?.interests">
-              {{ interest }}
-            </div>
-            <p v-if="!userData?.interests?.length">
-              {{ $t("user.profile.interests.empty") }}
-            </p>
-          </div>
-        </div>
-        <div class="items-container">
-          <h1>{{ $t("user.profile.bio.title") }}</h1>
-          <p>{{ userData?.bio ?? $t("user.profile.bio.empty") }}</p>
-        </div>
-      </div>
-    </div>
-    <div class="divider">
-      <h1>{{ $t("user.profile.introduction.title") }}</h1>
-    </div>
-    <div class="introduction">
-      <p>
-        {{ userData?.introduction ?? $t("user.profile.introduction.empty") }}
-      </p>
-    </div>
-    <div class="divider">
-      <h1>{{ $t("user.profile.connections") }}</h1>
-    </div>
-  </div>
+  <UserCard
+    v-if="userData"
+    :data="userData"
+    :show-profile-buttons="true"
+    :handle-logout="logout"
+  />
 </template>
 
 <style scoped>

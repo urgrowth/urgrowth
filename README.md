@@ -9,6 +9,7 @@ This is the repository for the URGROWTH website. It is built using Nuxt, Tailwin
 - [📝 Table of Contents](#-table-of-contents)
 - [🙋‍ What is URGROWTH?](#-what-is-urgrowth)
 - [🤔 How we can help you?](#-how-we-can-help-you)
+- [😎 Cool, what should I contribute?](#-cool-what-should-i-contribute)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
@@ -30,11 +31,16 @@ Our services are intended to lead you down this transforming path and help you b
 
 Join us in this inspiring endeavor, and let society and yourself benefit from your true identity shining.
 
-## 🤔 How we can help you?
+## 🤔 How we can help you
 
 1. We are a medium of creative youths with a passion for personal growth and development, for building a better society, and for making a difference in the world.
 2. We have learning processes that are designed to help you discover your true identity and purpose in life.
 3. We have a community of like-minded people who are willing to help you grow and develop. Such as coaches, mentors, and other youths.
+
+## 😎 Cool, what should I contribute?
+
+You should check out our [Figma](https://www.figma.com/file/G0Nt7pkqjuE6vd6lMLvBBL/URGROWTH-Flowchart?type=whiteboard&node-id=0%3A1&t=GtXPIXAAHIT2KM7Y-1)
+and [Discord](https://discord.gg/5QXqQ5Q) to see what we are up to.
 
 ## 🚀 Getting Started
 
