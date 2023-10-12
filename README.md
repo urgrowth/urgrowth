@@ -84,7 +84,9 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 This project is licensed under the [MIT License](./LICENSE)
 
-## 💰 Sponsor
+## 💰 Sponsor & Partners
 
 If you like this project, please consider [sponsoring us](https://github.com/sponsors/tinarskii) to support our work.
 Or our [Open Collective](https://opencollective.com/urgrowth) if you want to support us in a more transparent way.
+
+<p align="center"><img src="./public/images/acsp.png" width="512"></p>
