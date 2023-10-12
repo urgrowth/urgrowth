@@ -40,7 +40,7 @@ Join us in this inspiring endeavor, and let society and yourself benefit from yo
 ## 😎 Cool, what should I contribute?
 
 You should check out our [Figma](https://www.figma.com/file/G0Nt7pkqjuE6vd6lMLvBBL/URGROWTH-Flowchart?type=whiteboard&node-id=0%3A1&t=GtXPIXAAHIT2KM7Y-1)
-and [Discord](https://discord.gg/wNsfRerpX) to see what we are up to.
+and [Discord](https://discord.com/invite/gZg86g2UB3) to see what we are up to.
 
 ## 🚀 Getting Started
 
