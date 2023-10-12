@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
     .createHash("md5")
     .update(Buffer.from(user.email ?? email ?? ""))
     .digest("hex");
-  user!.avatarURL = `https://www.gravatar.com/avatar/${md5}?d=retro&size=128`;
+  user!.avatarURL = `https://www.gravatar.com/avatar/${md5}?d=retro&size=1024`;
 
   return { status: 200, body: JSON.stringify(user) };
 });

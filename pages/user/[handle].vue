@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const slug = useRoute().params.slug;
+const { handle } = useRoute().params;
 
 const res = await $fetch("/api/user", {
   query: {
-    handle: slug,
+    handle,
   },
   method: "GET",
 });

@@ -8,7 +8,7 @@ const avatar = `https://www.gravatar.com/avatar/${md5(
 </script>
 
 <template>
-  <nav>
+  <nav class="mb-6">
     <div class="navbar-start">
       <label for="my-drawer">
         <img class="icon" src="/icons/hamburger.png" alt="Menu" />
