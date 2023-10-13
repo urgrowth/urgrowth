@@ -6,15 +6,15 @@ const supabase = useSupabaseClient();
 
 onMounted(async () => {
   if (user?.value) {
-    return navigateTo("/profile");
+    navigateTo("/profile");
+  } else {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: window.location.origin,
+      },
+    });
   }
-
-  await supabase.auth.signInWithOAuth({
-    provider: "google",
-    options: {
-      redirectTo: window.location.origin,
-    },
-  });
 });
 </script>
 

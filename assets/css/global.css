@@ -21,6 +21,10 @@ textarea {
   font-family: "Gabarito", "Anuphan", var(--default-font);
 }
 
+pre {
+  white-space: pre-wrap;
+}
+
 .icon {
   width: 24px;
   height: 24px;

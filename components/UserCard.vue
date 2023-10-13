@@ -54,9 +54,7 @@ const { data, showProfileButtons, handleLogout } = defineProps(["data", "showPro
       <h1>{{ $t("user.profile.introduction.title") }}</h1>
     </div>
     <div class="introduction">
-      <p>
-        {{ data?.introduction ?? $t("user.profile.introduction.empty") }}
-      </p>
+      <pre>{{ data?.introduction ?? $t("user.profile.introduction.empty") }}</pre>
     </div>
     <div class="divider">
       <h1>{{ $t("user.profile.connections") }}</h1>
