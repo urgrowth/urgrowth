@@ -35,15 +35,14 @@ const newData = reactive({
   introduction:userData?.introduction,
   location: userData?.location,
 });
-const newDataCopy = JSON.parse(JSON.stringify(newData));
 
 function submit(e: Event) {
   e.preventDefault();
 
-  const skillsFiltered = newData.skills.filter((skill: string) => skill !== "");
-  const interestsFiltered = newData.interests.filter(
-    (interest: string) => interest !== "",
-  );
+  console.log(newData.skills)
+
+  const skillsFiltered = newData.skills.filter((skill: string) => skill.trim().length > 0);
+  const interestsFiltered = newData.interests.filter((interest: string) => interest.trim().length > 0);
 
   if (newData.handle.length > 32)
     (error.value = i18n.t("user.update.handle.maxLength"));
@@ -75,8 +74,8 @@ function submit(e: Event) {
       email: user.value?.email,
       full_name: newData.full_name,
       handle: newData.handle,
-      skills: newData.skills,
-      interests: newData.interests,
+      skills: skillsFiltered,
+      interests: interestsFiltered,
       bio: newData.bio,
       introduction: newData.introduction,
       location: newData.location,

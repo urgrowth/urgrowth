@@ -26,7 +26,7 @@ function changeLanguage() {
     </aside>
     <aside class="grid-flow-col items-center">
       <img src="/images/logo-white.svg" alt="LOGO" style="width: 32px" />
-      <p>{{ $t("footer.notice") }}</p>
+      <NuxtLink to="https://github.com/urgrowth/urgrowth">{{ $t("footer.notice") }}</NuxtLink>
     </aside>
     <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
       <NuxtLink to="https://twitter.com/ur_growth"
