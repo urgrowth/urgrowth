@@ -15,8 +15,8 @@ let authorInfo;
 
 if (project) {
   authorInfo = await $fetch("/api/user", {
-    method: "GET",
-    query: {
+    method: "POST",
+    body: {
       id: project.author,
     }
   });
