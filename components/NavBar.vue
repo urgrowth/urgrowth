@@ -22,10 +22,10 @@ const avatar = `https://www.gravatar.com/avatar/${md5(
       <h1>URGROWTH</h1>
     </div>
     <div class="navbar-end">
-      <NuxtLink to="/profile">
+      <a href="/profile">
         <img class="rounded-full" :src="avatar" alt="Account" v-if="user" />
         <img class="icon" src="/icons/user.png" alt="Account" v-else />
-      </NuxtLink>
+      </a>
     </div>
   </nav>
 </template>

@@ -8,7 +8,7 @@ const user = useSupabaseUser();
 const supabase = useSupabaseClient();
 let userData;
 
-let { body: data, res } = await $fetch("/api/user", {
+let { body: data } = await $fetch("/api/user", {
   body: {
     id: user.value?.id,
     email: user.value?.email,
@@ -16,7 +16,7 @@ let { body: data, res } = await $fetch("/api/user", {
   method: "POST",
 });
 
-if (!data) {
+if (!data || data === "User not found") {
   const res = await $fetch("/api/user", {
     body: {
       id: user.value?.id,

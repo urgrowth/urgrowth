@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
       interests: [] as Array<string>,
       email: email,
     } as never)
-    .single();
+    .select();
 
   if (error) return { status: 500, body: error.message };
 

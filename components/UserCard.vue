@@ -6,11 +6,11 @@ const { data, showProfileButtons, handleLogout } = defineProps(["data", "showPro
   <div class="flex flex-col gap-4 px-4 py-2 md:px-12 md:py-6">
     <div class="page-container">
       <div class="profile-container">
-        <img :src="data?.avatarURL" alt="avatar" class="icon" />
-        <h1 class="full_name">{{ data?.full_name }}</h1>
+        <img :src="data.avatarURL" alt="avatar" class="icon" />
+        <h1 class="full_name">{{ data.full_name }}</h1>
         <h1 class="handle">
-          @{{ data?.handle }}
-          {{ data?.location && " • " + data?.location }}
+          @{{ data.handle }}
+          {{ data.location && " • " + data.location }}
         </h1>
         <div class="flex gap-2" v-if="showProfileButtons">
           <button class="btn btn-primary" @click="navigateTo('/profile/edit')">
@@ -25,10 +25,10 @@ const { data, showProfileButtons, handleLogout } = defineProps(["data", "showPro
         <div class="items-container">
           <h1>{{ $t("user.profile.skills.title") }}</h1>
           <div class="items-wrapper">
-            <div class="skill" v-for="skill in data?.skills">
+            <div class="skill" v-for="skill in data.skills">
               {{ skill }}
             </div>
-            <p v-if="!data?.skills?.length">
+            <p v-if="!data.skills.length">
               {{ $t("user.profile.skills.empty") }}
             </p>
           </div>
@@ -36,17 +36,17 @@ const { data, showProfileButtons, handleLogout } = defineProps(["data", "showPro
         <div class="items-container">
           <h1>{{ $t("user.profile.interests.title") }}</h1>
           <div class="items-wrapper">
-            <div class="interest" v-for="interest in data?.interests">
+            <div class="interest" v-for="interest in data.interests">
               {{ interest }}
             </div>
-            <p v-if="!data?.interests?.length">
+            <p v-if="!data.interests.length">
               {{ $t("user.profile.interests.empty") }}
             </p>
           </div>
         </div>
         <div class="items-container">
           <h1>{{ $t("user.profile.bio.title") }}</h1>
-          <p>{{ data?.bio ?? $t("user.profile.bio.empty") }}</p>
+          <p>{{ data.bio?.length > 0 ? data.bio : $t("user.profile.bio.empty") }}</p>
         </div>
       </div>
     </div>
@@ -54,7 +54,7 @@ const { data, showProfileButtons, handleLogout } = defineProps(["data", "showPro
       <h1>{{ $t("user.profile.introduction.title") }}</h1>
     </div>
     <div class="introduction">
-      <pre>{{ data?.introduction ?? $t("user.profile.introduction.empty") }}</pre>
+      <pre>{{ data.introduction?.length > 0 ? data.introduction : $t("user.profile.introduction.empty") }}</pre>
     </div>
     <div class="divider">
       <h1>{{ $t("user.profile.connections") }}</h1>
