@@ -6,11 +6,11 @@ import { location } from "~/data/location.js";
 const user = useSupabaseUser();
 
 const res = await $fetch("/api/user", {
-  query: {
+  body: {
     id: user.value?.id,
     email: user.value?.email,
   },
-  method: "GET",
+  method: "POST",
 });
 
 const i18n = useI18n();
