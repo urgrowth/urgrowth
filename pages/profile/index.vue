@@ -8,12 +8,12 @@ const user = useSupabaseUser();
 const supabase = useSupabaseClient();
 let userData;
 
-let { body: data } = await $fetch("/api/user", {
-  query: {
+let { body: data, res } = await $fetch("/api/user", {
+  body: {
     id: user.value?.id,
     email: user.value?.email,
   },
-  method: "GET",
+  method: "POST",
 });
 
 if (!data) {

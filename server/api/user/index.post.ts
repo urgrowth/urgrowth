@@ -2,10 +2,10 @@ import { serverSupabaseClient } from "#supabase/server";
 import crypto from "crypto";
 
 export default defineEventHandler(async (event) => {
-  const query = getQuery(event);
-  const { id, handle, email } = query;
+  const { id, handle, email } = await readBody(event);
   const supabase = await serverSupabaseClient(event);
 
+  console.log(id, handle, email);
   const { data } = await supabase
     .from("userData")
     .select("*")

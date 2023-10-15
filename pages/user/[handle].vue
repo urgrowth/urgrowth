@@ -2,10 +2,10 @@
 const { handle } = useRoute().params;
 
 const res = await $fetch("/api/user", {
-  query: {
+  body: {
     handle,
   },
-  method: "GET",
+  method: "POST",
 });
 const data = res.status === 200 ? JSON.parse(res?.body) : null;
 </script>
