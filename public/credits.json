@@ -1,0 +1,66 @@
+{
+  "images": {
+    "banner1.svg": {
+      "url": "https://www.freepik.com/free-vector/hand-drawn-colorful-innovation-concept_20286053.htm#query=idea&position=20&from_view=search&track=sph",
+      "by": "pikisuperstar"
+    }
+  },
+  "icons": {
+    "info.png": {
+      "url": "https://www.freepik.com/",
+      "by": "Freepik"
+    },
+    "hamburger.png": {
+      "url": "https://www.freepik.com/",
+      "by": "Freepik"
+    },
+    "user.png": {
+      "url": "https://www.freepik.com/",
+      "by": "Freepik"
+    },
+    "book.png": {
+      "url": "https://www.freepik.com/",
+      "by": "Freepik"
+    },
+    "discuss.png": {
+      "url": "https://www.freepik.com/",
+      "by": "Freepik"
+    },
+    "community.png": {
+      "url": "https://www.freepik.com/",
+      "by": "Freepik"
+    },
+    "grow.png": {
+      "url": "https://www.freepik.com/",
+      "by": "Freepik"
+    },
+    "people.png": {
+      "url": "https://www.freepik.com/",
+      "by": "Freepik"
+    },
+    "home.png": {
+      "url": "https://www.freepik.com/",
+      "by": "Freepik"
+    },
+    "target.png": {
+      "url": "https://thenounproject.com/nawiconstudio/",
+      "by": "Nawicon Studio"
+    },
+    "mentoring.png": {
+      "url": "https://www.flaticon.com/free-icons/mentoring",
+      "by": "Dewi Sari"
+    },
+    "service.png": {
+      "url": "https://www.flaticon.com/free-icons/information",
+      "by": "popcornarts"
+    },
+    "cross.png": {
+      "url": "https://www.flaticon.com/authors/pixel-perfect",
+      "by": "Pixel perfect"
+    },
+    "bell.png": {
+      "url": "https://www.flaticon.com/authors/pixel-perfect",
+      "by": "Pixel perfect"
+    }
+  }
+}
