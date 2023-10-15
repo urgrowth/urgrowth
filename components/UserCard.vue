@@ -28,7 +28,7 @@ const { data, showProfileButtons, handleLogout } = defineProps(["data", "showPro
             <div class="skill" v-for="skill in data.skills">
               {{ skill }}
             </div>
-            <p v-if="!data.skills.length">
+            <p v-if="!data.skills?.length">
               {{ $t("user.profile.skills.empty") }}
             </p>
           </div>
@@ -39,7 +39,7 @@ const { data, showProfileButtons, handleLogout } = defineProps(["data", "showPro
             <div class="interest" v-for="interest in data.interests">
               {{ interest }}
             </div>
-            <p v-if="!data.interests.length">
+            <p v-if="!data.interests?.length">
               {{ $t("user.profile.interests.empty") }}
             </p>
           </div>
