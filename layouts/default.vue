@@ -12,13 +12,15 @@
         <ul
           class="menu gap-y-4 min-h-full w-64 border-r border-white/25 bg-gradient-to-b from-blue-400/60 to-red-500/20 p-4 font-bold text-white backdrop-blur-xl"
         >
-          <li class="flex flex-row">
+          <div class="flex w-full justify-between items-center">
+            <div class="flex items-center gap-2">
               <img src="/images/logo-white.svg" alt="Logo" class="w-8 ml-1 p-0" />
-              <h1 class="pl-2 pt-3">URGROWTH</h1>
+              <h1 class="text-base">URGROWTH</h1>
+            </div>
               <label for="my-drawer">
                 <img class="icon invert hover:invert-0" src="/icons/hamburger.png" alt="Menu" />
               </label>
-          </li>
+          </div>
           <li>
             <NuxtLink to="/">
               <img src="/icons/home.png" alt="Home" class="w-4"/>
@@ -116,8 +118,9 @@ a {
 .open {
   transform: translateY(-50%) rotate(0deg);
 }
-.text-drop-shadow {
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+.icon {
+  @apply w-4 h-auto;
 }
 </style>
 
