@@ -57,7 +57,15 @@ const { data, showProfileButtons, handleLogout } = defineProps(["data", "showPro
       <pre>{{ data.introduction?.length > 0 ? data.introduction : $t("user.profile.introduction.empty") }}</pre>
     </div>
     <div class="divider">
-      <h1>{{ $t("user.profile.connections") }}</h1>
+      <h1>{{ $t("user.profile.accomplishment") }}</h1>
+    </div>
+    <div class="items-wrapper">
+      <div class="card w-96 bg-base-100 border " v-for="id in data.accomplishment">
+        <div class="card-body">
+          <h2 class="text-center font-bold text-2xl">{{ $t(`user.accomplishment[${id - 1}].title`) }}</h2>
+          <p>{{ $t(`user.accomplishment[${id - 1}].description`) }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>

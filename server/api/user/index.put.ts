@@ -1,24 +1,23 @@
-import { serverSupabaseClient } from "#supabase/server";
+import { prisma } from "~/database/prisma";
 import { faker } from "@faker-js/faker";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
   const { id, full_name, email } = body;
-  const supabase = await serverSupabaseClient(event);
 
-  const { data, error } = await supabase
-    .from("userData")
-    .insert({
+  const data = await prisma.userData.create({
+    data: {
       id: id,
       handle: faker.internet.userName().toLowerCase(),
       full_name: full_name ?? "Anonymous",
       skills: [] as Array<string>,
       interests: [] as Array<string>,
       email: email,
-    } as never)
-    .select();
-
-  if (error) return { status: 500, body: error.message };
+    }
+  }).catch((err) => {
+    console.error(err);
+    return { status: 500, body: err.message };
+  });
 
   return { status: 200, body: JSON.stringify(data) };
 });

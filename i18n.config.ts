@@ -39,6 +39,17 @@ export default defineI18nConfig(() => ({
           ],
         },
       },
+      learning: {
+        title: "Learning",
+        progress: "My Progress",
+        steps: [
+          "Find your dream",
+          "Prioritize your dream",
+          "Setting goals",
+          "Weakness & Strength",
+          "Develop & Manage",
+        ]
+      },
       modal: {
         end: {
           close: "Close",
@@ -51,9 +62,15 @@ export default defineI18nConfig(() => ({
         title: {
           error: "Error",
           success: "Success",
-        }
+        },
       },
       user: {
+        accomplishment: [
+          {
+            title: "The First Step",
+            description: "The dream begins with you, you are the key to unlock your dream! (Created a URGROWTH profile)",
+          },
+        ],
         update: {
           handle: {
             required: "Handle must not be empty",
@@ -87,6 +104,7 @@ export default defineI18nConfig(() => ({
           cancel: "Cancel",
         },
         profile: {
+          accomplishment: "Accomplishment",
           notFound: "🤔 Hmm, we can't find this user. Are you sure you typed the correct handle?",
           edit: "Edit Profile",
           logout: "Logout",
@@ -109,12 +127,12 @@ export default defineI18nConfig(() => ({
           introduction: {
             title: "Introduction",
             empty: "🤔 We don't know about them... but we think they have a big dream",
-          }
-        }
+          },
+        },
       },
       footer: {
         notice: "© 2023 URGROWTH — All rights reserved",
-      }
+      },
     },
     th: {
       home: {
@@ -144,6 +162,17 @@ export default defineI18nConfig(() => ({
           ],
         },
       },
+      learning: {
+        title: "การเรียนรู้",
+        progress: "ความคืบหน้า",
+        steps: [
+          "หาความฝัน",
+          "จัดลำดับความฝัน",
+          "ตั้งเป้าหมาย",
+          "หาจุดอ่อนและจุดแข็ง",
+          "กำจัดและเสริมสร้าง",
+        ]
+      },
       modal: {
         end: {
           close: "ปิด",
@@ -156,9 +185,15 @@ export default defineI18nConfig(() => ({
         title: {
           error: "เกิดข้อผิดพลาด",
           success: "สำเร็จ",
-        }
+        },
       },
       user: {
+        accomplishment: [
+          {
+            title: "ก้าวแรกสู่ความสำเร็จ",
+            description: "ความสำเร็จเริ่มต้นด้วยตัวคุณเอง คุณคือผู้กำหนดอนาคตของคุณ! (สร้างโพรไฟล์)",
+          },
+        ],
         update: {
           handle: {
             required: "ชื่อผู้ใช้ต้องไม่ว่างเปล่า",
@@ -192,6 +227,7 @@ export default defineI18nConfig(() => ({
           cancel: "ยกเลิก",
         },
         profile: {
+          accomplishment: "ความสำเร็จ",
           notFound: "🤔 อ๊ะ พวกเราไม่พบผู้ใช้นี้ แน่ใจไหมว่าคุณพิมพ์แฮนเดิล (ชื่อผู้ใช้) ที่ถูกต้อง?",
           edit: "แก้ไขโพรไฟล์",
           logout: "ออกจากระบบ",
@@ -214,12 +250,12 @@ export default defineI18nConfig(() => ({
           introduction: {
             title: "แนะนำตัว",
             empty: "🤔 เราไม่รู้เกี่ยวกับเขา... แต่เขาคงมีความฝันอันยิ่งใหญ่",
-          }
-        }
+          },
+        },
       },
       footer: {
         notice: "© 2023 URGROWTH — สงวนลิขสิทธิ์ทุกประการ",
-      }
+      },
     },
   },
 }));

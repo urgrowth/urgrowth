@@ -1,4 +1,4 @@
-import { serverSupabaseClient } from "#supabase/server";
+import { prisma } from "~/database/prisma";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
@@ -12,31 +12,30 @@ export default defineEventHandler(async (event) => {
     introduction,
     location,
   } = body;
-  const supabase = await serverSupabaseClient(event);
 
-  const { data: handleData } = await supabase
-    .from("userData")
-    .select("handle, email")
-    .eq("handle", handle)
-    .not("id", "eq", id)
-    .single();
+  const handleData = await prisma.userData.findUnique({
+    where: {
+      handle: handle,
+      NOT: [
+        {
+          id: id,
+        }
+      ]
+    },
+    select: {
+      handle: true,
+      email: true,
+    },
+  });
 
   if (handleData?.handle)
     return { status: 500, errMsg: "user.update.handle.taken" };
 
-  // interface IUserUpdate {
-  //   handle: string;
-  //   full_name: string;
-  //   skills: Array<string>;
-  //   interests: Array<string>;
-  //   bio: string;
-  //   introduction: string;
-  //   location: string;
-  // }
-
-  const { error } = await supabase
-    .from("userData")
-    .update({
+  prisma.userData.update({
+    where: {
+      id: id,
+    },
+    data: {
       handle: handle.toLowerCase(),
       full_name,
       skills,
@@ -44,10 +43,11 @@ export default defineEventHandler(async (event) => {
       bio,
       introduction,
       location,
-    } as never)
-    .eq("id", id);
-
-  if (error) return { status: 500, body: error.message };
+    },
+  }).catch((err) => {
+    console.error(err);
+    return { status: 500, errMsg: "user.update.failed" };
+  });
 
   return { status: 200 };
 });

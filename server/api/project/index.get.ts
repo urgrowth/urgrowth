@@ -1,12 +1,11 @@
-import { serverSupabaseClient } from "#supabase/server";
+import { prisma } from "~/database/prisma";
 
 export default defineEventHandler(async (event) => {
-  const supabase = await serverSupabaseClient(event);
+  const data = await prisma.projectData.findMany({
+    orderBy: {
+      created_at: "desc",
+    }
+  });
 
-  const { data } = await supabase
-    .from("projectData")
-    .select("*")
-    .order("created_at", { ascending: false });
-
-  return { status: 200, body: data };
+  return { status: 200, body: JSON.stringify(data) };
 });

@@ -19,7 +19,7 @@ const avatar = `https://www.gravatar.com/avatar/${md5(
       @click="navigateTo('/')"
     >
       <img src="/images/logo-black.svg" alt="Logo" />
-      <h1>URGROWTH</h1>
+      <h1>URGROWTH BETA</h1>
     </div>
     <div class="navbar-end">
       <a href="/profile">

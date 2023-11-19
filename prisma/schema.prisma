@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model projectData {
+  id          String    @id @default(cuid()) @map("_id")
+  author      String    @map("author_id")
+  name        String    @db.String
+  purpose     String  @db.String
+  create      String  @db.String
+  result      String  @db.String
+  history     Json[]    @default([]) @db.Json
+  category    String  @db.String
+  created_at  DateTime  @default(now()) @db.Timestamp
+  description String  @db.String
+  userData    userData  @relation(fields: [author], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model userData {
+  id             String        @id @default(cuid()) @map("_id")
+  handle         String        @unique
+  status         UserTypes        @default(user)
+  accomplishment Int[]          @default([1]) @db.Int
+  bio            String?       @default("No bio yet :(") @db.String
+  introduction   String?       @default("Welcome to my profile!") @db.String
+  location       String?       @default("") @db.String
+  interests      String[]          @default([]) @db.String
+  skills         String[]          @default([]) @db.String
+  email          String       @unique @db.String
+  full_name      String       @db.String
+  projectData    projectData[]
+}
+
+enum UserTypes {
+  user
+  admin
+  expert
+  moderator
+}

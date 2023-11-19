@@ -34,7 +34,7 @@
               </NuxtLink>
           </li>
           <li>
-            <NuxtLink @click="toggleAccordion('suggestions')">
+            <NuxtLink to="/suggestions" @mouseenter="toggleAccordion('suggestions')">
               <img src="/icons/info.png" alt="Suggestions" class="w-4" />
               Suggestions
               <img src="/images/caret.png" alt="caret" class="w-2 caret" :class="{ 'open': activeAccordion === 'suggestions'}" />
@@ -42,7 +42,7 @@
               <NuxtLink v-if="activeAccordion === 'suggestions'" to="/suggestions/model" class="ml-8 mt-2">Model</NuxtLink>
           </li>
           <li>
-            <NuxtLink @click="toggleAccordion('learnings')">
+            <NuxtLink to="/learning" @mouseenter="toggleAccordion('learnings')">
               <img src="/icons/book.png" alt="Learning" class="w-4" />
               Learnings
               <img src="/images/caret.png" alt="caret" class="w-2 caret" :class="{ 'open': activeAccordion === 'learnings'}" />
@@ -62,7 +62,7 @@
           </li>
 
           <li>
-            <NuxtLink @click="toggleAccordion('consult')">
+            <NuxtLink to="/consult" @mouseenter="toggleAccordion('consult')">
               <img src="/icons/discuss.png" alt="Consult" class="w-4" />
               Consult
               <img src="/images/caret.png" alt="Suggestions" class="w-2 caret" :class="{ 'open': activeAccordion === 'consult'}" />
@@ -72,7 +72,7 @@
           </li>
 
           <li>
-            <NuxtLink @click="toggleAccordion('community')">
+            <NuxtLink to="/community" @mouseenter="toggleAccordion('community')">
               <img src="/icons/community.png" alt="Community" class="w-4" />
               Community
               <img src="/images/caret.png" alt="Suggestions" class="w-2 caret" :class="{ 'open': activeAccordion === 'community'}" />

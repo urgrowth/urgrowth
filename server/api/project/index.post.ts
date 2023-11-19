@@ -1,17 +1,14 @@
-import { serverSupabaseClient } from "#supabase/server";
+import { prisma } from "~/database/prisma";
 
 export default defineEventHandler(async (event) => {
   const { id } = await readBody(event);
-  const supabase = await serverSupabaseClient(event);
 
   if (id) {
-    const { data } = await supabase
-      .from("projectData")
-      .select("*")
-      .or(
-        `id.eq.${id}`,
-      )
-      .single();
+    const data = await prisma.projectData.findUnique({
+      where: {
+        id: id,
+      }
+    });
 
     return { status: 200, body: data };
   } else {
