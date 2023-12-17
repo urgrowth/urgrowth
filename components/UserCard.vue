@@ -1,5 +1,11 @@
 <script setup lang="ts">
-const { data, showProfileButtons, handleLogout } = defineProps(["data", "showProfileButtons", "handleLogout"]);
+const { data, showProfileButtons, handleLogout } = defineProps([
+  "data",
+  "showProfileButtons",
+  "handleLogout",
+]);
+import { ezmark } from "~/lib/ezmark";
+import { h } from "vue";
 </script>
 
 <template>
@@ -46,23 +52,28 @@ const { data, showProfileButtons, handleLogout } = defineProps(["data", "showPro
         </div>
         <div class="items-container">
           <h1>{{ $t("user.profile.bio.title") }}</h1>
-          <p>{{ data.bio?.length > 0 ? data.bio : $t("user.profile.bio.empty") }}</p>
+          <p>
+            {{ data.bio?.length > 0 ? data.bio : $t("user.profile.bio.empty") }}
+          </p>
         </div>
       </div>
     </div>
     <div class="divider">
       <h1>{{ $t("user.profile.introduction.title") }}</h1>
     </div>
-    <div class="introduction">
-      <pre>{{ data.introduction?.length > 0 ? data.introduction : $t("user.profile.introduction.empty") }}</pre>
-    </div>
+    <div class="introduction" v-html="ezmark(data.introduction || '')"></div>
     <div class="divider">
       <h1>{{ $t("user.profile.accomplishment") }}</h1>
     </div>
     <div class="items-wrapper">
-      <div class="card w-96 bg-base-100 border " v-for="id in data.accomplishment">
+      <div
+        class="card w-96 border bg-base-100"
+        v-for="id in data.accomplishment"
+      >
         <div class="card-body">
-          <h2 class="text-center font-bold text-2xl">{{ $t(`user.accomplishment[${id - 1}].title`) }}</h2>
+          <h2 class="text-center text-2xl font-bold">
+            {{ $t(`user.accomplishment[${id - 1}].title`) }}
+          </h2>
           <p>{{ $t(`user.accomplishment[${id - 1}].description`) }}</p>
         </div>
       </div>
@@ -121,6 +132,10 @@ h1 {
 
 .interest {
   @apply rounded-full bg-gradient-to-tr from-green-900 to-green-600 px-4 py-2 text-sm text-white;
+}
+
+.introduction {
+  @apply min-h-[50vh] rounded p-4 shadow-xl border border-base-200;
 }
 
 .introduction p {

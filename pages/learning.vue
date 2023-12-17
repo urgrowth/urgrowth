@@ -11,18 +11,27 @@ let page = ref(1);
     <div class="page-layouts">
       <div class="grid grid-cols-1 gap-12">
         <div
-          class="title flex flex-col items-center bg-gradient-to-tr from-blue-700 gap-6 to-blue-600 py-12 rounded text-white h-min"
+          class="title flex h-min flex-col items-center gap-6 rounded bg-gradient-to-tr from-blue-700 to-blue-600 py-12 text-white"
         >
-          <span class="font-black text-5xl uppercase">{{ $t("learning.progress") }}</span>
-          <ul class="steps text-base px-2 steps-horizontal w-full">
-            <li
-              class="step step-primary"
-            >
-              {{ $t("learning.steps[0]") }}</li>
-            <li :class="'step' + (page > 1 ? ' step-primary' : '')">{{ $t("learning.steps[1]") }}</li>
-            <li :class="'step' + (page > 2 ? ' step-primary' : '')">{{ $t("learning.steps[2]") }}</li>
-            <li :class="'step' + (page > 3 ? ' step-primary' : '')">{{ $t("learning.steps[3]") }}</li>
-            <li :class="'step' + (page > 4 ? ' step-primary' : '')">{{ $t("learning.steps[4]") }}</li>
+          <span class="text-5xl font-black uppercase">{{
+            $t("learning.progress")
+          }}</span>
+          <ul class="steps steps-horizontal w-full px-2 text-base">
+            <li class="step step-primary">
+              {{ $t("learning.steps[0]") }}
+            </li>
+            <li :class="'step' + (page > 1 ? ' step-primary' : '')">
+              {{ $t("learning.steps[1]") }}
+            </li>
+            <li :class="'step' + (page > 2 ? ' step-primary' : '')">
+              {{ $t("learning.steps[2]") }}
+            </li>
+            <li :class="'step' + (page > 3 ? ' step-primary' : '')">
+              {{ $t("learning.steps[3]") }}
+            </li>
+            <li :class="'step' + (page > 4 ? ' step-primary' : '')">
+              {{ $t("learning.steps[4]") }}
+            </li>
           </ul>
           <div class="flex w-full justify-evenly">
             <button
@@ -45,7 +54,13 @@ let page = ref(1);
           <h1 class="title text-center">
             {{ $t(`learning.steps[${page - 1}]`) }}
           </h1>
-          <iframe class="w-1/2 py-6 m-auto aspect-video rounded shadow-lg border-none" src="https://www.youtube.com/embed/hBSIrdadfi4?si=6T7m-R6zB4UPFGdv" title="YouTube video player" allow="" allowfullscreen></iframe>
+          <iframe
+            class="m-auto aspect-video w-1/2 rounded border-none py-6 shadow-lg"
+            src="https://www.youtube.com/embed/hBSIrdadfi4?si=6T7m-R6zB4UPFGdv"
+            title="YouTube video player"
+            allow=""
+            allowfullscreen
+          ></iframe>
           <p class="text-justify">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
@@ -99,7 +114,6 @@ let page = ref(1);
         </div>
       </div>
     </div>
-
   </div>
 </template>
 

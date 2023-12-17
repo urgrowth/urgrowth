@@ -2,9 +2,6 @@
 import credits from "public/credits.json";
 </script>
 
-<template>
-</template>
+<template></template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -3,19 +3,23 @@ const { data } = defineProps(["data"]);
 </script>
 
 <template>
-  <div class="card w-full h-auto bg-base-100 shadow-xl image-full">
-    <figure><img
-      :src="`https://rdeytruriwzymdflpcfv.supabase.co/storage/v1/object/public/projectInfo/project_card_${data.id}.png`"
-      alt="PROJECT CARD" /></figure>
+  <div class="card image-full h-auto w-full bg-base-100 shadow-xl">
+    <figure>
+      <img
+        :src="`https://rdeytruriwzymdflpcfv.supabase.co/storage/v1/object/public/projectInfo/project_card_${data.id}.png`"
+        alt="PROJECT CARD"
+      />
+    </figure>
     <div class="card-body">
-      <h2 class="card-title text-3xl justify-center">{{ data.name }}</h2>
+      <h2 class="card-title justify-center text-3xl">{{ data.name }}</h2>
       <p>{{ data.description }}</p>
       <div class="card-actions mt-8">
-          <button
-            @click="navigateTo(`/project/${data.id}`)"
-            class="btn btn-primary w-full">
-            VIEW PROJECT
-          </button>
+        <button
+          @click="navigateTo(`/project/${data.id}`)"
+          class="btn btn-primary w-full"
+        >
+          VIEW PROJECT
+        </button>
       </div>
     </div>
   </div>

@@ -8,12 +8,12 @@ export default defineEventHandler(async (event) => {
     where: {
       OR: [
         { id: id ?? "2df6fa9b-4669-44a2-8cc3-02d6c50b6caa" },
-        { handle: handle ?? "x" }
-      ]
-    }
+        { handle: handle ?? "x" },
+      ],
+    },
   });
 
-  const user = data as typeof data & { avatarURL?: string } | null;
+  const user = data as (typeof data & { avatarURL?: string }) | null;
 
   if (!user) return { status: 500, body: "User not found" };
 

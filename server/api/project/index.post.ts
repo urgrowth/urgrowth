@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
     const data = await prisma.projectData.findUnique({
       where: {
         id: id,
-      }
+      },
     });
 
     return { status: 200, body: data };

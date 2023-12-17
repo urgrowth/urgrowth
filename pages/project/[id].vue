@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  middleware: "auth"
+  middleware: "auth",
 });
 
 const { id } = useRoute().params;
@@ -8,7 +8,7 @@ const { body: project } = await $fetch("/api/project", {
   method: "POST",
   body: {
     id,
-  }
+  },
 });
 
 let authorInfo;
@@ -18,12 +18,12 @@ if (project) {
     method: "POST",
     body: {
       id: project.author,
-    }
+    },
   });
 
-  project.author = JSON.parse(authorInfo.body)
+  project.author = JSON.parse(authorInfo.body);
 } else {
-  navigateTo('/learning');
+  navigateTo("/learning");
 }
 </script>
 
@@ -33,7 +33,11 @@ if (project) {
       <h1 class="title">{{ project.name }}</h1>
       <p>{{ project.description }}</p>
     </div>
-    <img :src="`https://rdeytruriwzymdflpcfv.supabase.co/storage/v1/object/public/projectInfo/project_card_${project.id}.png`" class="mt-12 my-6 mx-auto rounded-md" alt="PROJECT CARD">
+    <img
+      :src="`https://rdeytruriwzymdflpcfv.supabase.co/storage/v1/object/public/projectInfo/project_card_${project.id}.png`"
+      class="mx-auto my-6 mt-12 rounded-md"
+      alt="PROJECT CARD"
+    />
     <div class="flex flex-col gap-12">
       <div class="flex flex-col gap-4">
         <h1>Purpose</h1>
@@ -50,13 +54,21 @@ if (project) {
       <div class="flex flex-col gap-4">
         <h1>Author</h1>
         <div
-          class="flex rounded-full gap-4 items-center shadow-lg justify-center mx-auto cursor-pointer bg-gradient-to-br from-purple-900 to-blue-800"
+          class="mx-auto flex cursor-pointer items-center justify-center gap-4 rounded-full bg-gradient-to-br from-purple-900 to-blue-800 shadow-lg"
           @click="navigateTo(`/user/${project.author.handle}`)"
         >
-          <img :src="project.author.avatarURL" class="w-28 rounded-full border-4 border-transparent" alt="AUTHOR AVATAR">
+          <img
+            :src="project.author.avatarURL"
+            class="w-28 rounded-full border-4 border-transparent"
+            alt="AUTHOR AVATAR"
+          />
           <div class="flex flex-col pr-8">
-            <h2 class="text-2xl font-bold text-white">{{ project.author.full_name }}</h2>
-            <h2 class="text-lg text-neutral-400">@{{ project.author.handle }}</h2>
+            <h2 class="text-2xl font-bold text-white">
+              {{ project.author.full_name }}
+            </h2>
+            <h2 class="text-lg text-neutral-400">
+              @{{ project.author.handle }}
+            </h2>
           </div>
         </div>
       </div>
@@ -66,7 +78,7 @@ if (project) {
 
 <style scoped>
 .title {
-  @apply text-6xl font-bold text-center;
+  @apply text-center text-6xl font-bold;
 }
 
 h1 {
@@ -74,10 +86,10 @@ h1 {
 }
 
 .title-container {
-  @apply flex flex-col gap-2 items-center justify-center
+  @apply flex flex-col items-center justify-center gap-2;
 }
 
 .title-container p {
-  @apply text-xl text-center text-neutral-500;
+  @apply text-center text-xl text-neutral-500;
 }
 </style>

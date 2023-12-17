@@ -8,7 +8,7 @@
           </h1>
           <h1>
             <span class="highlight">{{ $t("home.banner.subtitle") }}</span>
-            <span class="sub">LET'S URGROWTH WEIGH UP YOUR IDEAS</span>
+            <span class="sub">LET URGROWTH WEIGH UP YOUR IDEAS</span>
           </h1>
         </div>
         <button class="btn btn-warning w-80" @click="navigateTo('/login')">

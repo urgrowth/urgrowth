@@ -32,41 +32,43 @@ const newData = reactive({
   skills: userData?.skills,
   interests: userData?.interests,
   bio: userData?.bio,
-  introduction:userData?.introduction,
+  introduction: userData?.introduction,
   location: userData?.location,
 });
 
 function submit(e: Event) {
   e.preventDefault();
 
-  console.log(newData.skills)
+  console.log(newData.skills);
 
-  const skillsFiltered = newData.skills.filter((skill: string) => skill.trim().length > 0);
-  const interestsFiltered = newData.interests.filter((interest: string) => interest.trim().length > 0);
+  const skillsFiltered = newData.skills.filter(
+    (skill: string) => skill.trim().length > 0,
+  );
+  const interestsFiltered = newData.interests.filter(
+    (interest: string) => interest.trim().length > 0,
+  );
 
   if (newData.handle.length > 32)
-    (error.value = i18n.t("user.update.handle.maxLength"));
+    error.value = i18n.t("user.update.handle.maxLength");
   if (newData.full_name.length > 64)
-    (error.value = i18n.t("user.update.fullName.maxLength"));
+    error.value = i18n.t("user.update.fullName.maxLength");
   if (skillsFiltered.length > 5)
-    (error.value = i18n.t("user.update.skills.maxLength"));
+    error.value = i18n.t("user.update.skills.maxLength");
   if (interestsFiltered.length > 5)
-    (error.value = i18n.t("user.update.interests.maxLength"));
+    error.value = i18n.t("user.update.interests.maxLength");
   if (newData.bio.length > 256)
-    (error.value = i18n.t("user.update.bio.maxLength"));
+    error.value = i18n.t("user.update.bio.maxLength");
   if (newData.introduction.length > 2048)
-    (error.value = i18n.t("user.update.introduction.maxLength"));
+    error.value = i18n.t("user.update.introduction.maxLength");
 
-  if (!newData.handle)
-    (error.value = i18n.t("user.update.handle.required"));
-  if (!newData.full_name)
-    (error.value = i18n.t("user.update.fullName.required"));
+  if (!newData.handle) error.value = i18n.t("user.update.handle.required");
+  if (!newData.full_name) error.value = i18n.t("user.update.fullName.required");
 
   if (!newData.handle?.match(/^[a-zA-Z0-9_]+$/))
-    (error.value = i18n.t("user.update.handle.pattern"));
+    error.value = i18n.t("user.update.handle.pattern");
 
   if (newData.handle.length < 3)
-    (error.value = i18n.t("user.update.handle.minLength"));
+    error.value = i18n.t("user.update.handle.minLength");
 
   $fetch("/api/user", {
     body: {
@@ -136,7 +138,7 @@ function closeErrorDialog() {
               maxlength="64"
             />
             <span class="label-text-alt"
-            >{{ 64 - newData.full_name?.length }}
+              >{{ 64 - newData.full_name?.length }}
               {{ $t("user.edit.charLeft") }}</span
             >
           </div>
@@ -151,7 +153,7 @@ function closeErrorDialog() {
                 maxlength="32"
               />
               <span class="label-text-alt"
-              >{{ 32 - newData.handle?.length }}
+                >{{ 32 - newData.handle?.length }}
                 {{ $t("user.edit.charLeft") }}</span
               >
             </div>
@@ -175,8 +177,8 @@ function closeErrorDialog() {
               {{ $t("user.edit.save") }}
             </button>
             <span class="btn btn-error" @click="navigateTo('/profile')">{{
-                $t("user.edit.cancel")
-              }}</span>
+              $t("user.edit.cancel")
+            }}</span>
           </div>
         </div>
         <div class="side-info-container">
@@ -199,7 +201,7 @@ function closeErrorDialog() {
                   "
                 />
                 <span class="label-text-alt"
-                >{{ 5 - newData.skills.length }}
+                  >{{ 5 - newData.skills.length }}
                   {{ $t("user.edit.tagsLeft") }}</span
                 >
               </div>
@@ -221,7 +223,7 @@ function closeErrorDialog() {
                   placeholder="Gaming, Content Creation, Music Producing..."
                 />
                 <span class="label-text-alt"
-                >{{ 5 - newData.interests.length }}
+                  >{{ 5 - newData.interests.length }}
                   {{ $t("user.edit.tagsLeft") }}</span
                 >
               </div>
@@ -237,7 +239,7 @@ function closeErrorDialog() {
               v-model="newData.bio"
             />
             <span class="label-text-alt"
-            >{{ 256 - newData.bio?.length }}
+              >{{ 256 - newData.bio?.length }}
               {{ $t("user.edit.charLeft") }}</span
             >
           </div>
@@ -256,7 +258,7 @@ function closeErrorDialog() {
         >
         </textarea>
         <span class="label-text-alt"
-        >{{ 2048 - newData.introduction?.length }}
+          >{{ 2048 - newData.introduction?.length }}
           {{ $t("user.edit.charLeft") }}</span
         >
       </div>
