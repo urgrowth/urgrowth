@@ -4,8 +4,7 @@ const { data, showProfileButtons, handleLogout } = defineProps([
   "showProfileButtons",
   "handleLogout",
 ]);
-import { ezmark } from "~/lib/ezmark";
-import { h } from "vue";
+import { render } from "~/lib/render";
 </script>
 
 <template>
@@ -61,7 +60,7 @@ import { h } from "vue";
     <div class="divider">
       <h1>{{ $t("user.profile.introduction.title") }}</h1>
     </div>
-    <div class="introduction" v-html="ezmark(data.introduction || '')"></div>
+    <div class="introduction" v-html="render(data.introduction || '')"></div>
     <div class="divider">
       <h1>{{ $t("user.profile.accomplishment") }}</h1>
     </div>
