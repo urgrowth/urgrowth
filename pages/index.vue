@@ -27,7 +27,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
       <div class="img rounded-2xl lg:h-full h-[30vh]"></div>
       <div class="flex flex-col gap-4">
-        <h1 class="text-5xl font-bold text-transparent text-accent bg-clip-text">{{ $t("home.about.title") }}</h1>
+        <h1 class="text-5xl font-bold text-accent">{{ $t("home.about.title") }}</h1>
         <p class="text-lg text-justify">
           {{ $t("home.about.description") }}
         </p>
