@@ -27,53 +27,58 @@ import { render } from "~/lib/render";
         </div>
       </div>
       <div class="side-info-container">
-        <div class="items-container">
-          <h1>{{ $t("user.profile.skills.title") }}</h1>
-          <div class="items-wrapper">
-            <div class="skill" v-for="skill in data.skills">
-              {{ skill }}
+        <div class="skills-and-interests">
+          <div class="items-container">
+            <h1>{{ $t("user.profile.skills.title") }}</h1>
+            <div class="items-wrapper">
+              <div class="skill" v-for="skill in data.skills">
+                {{ skill }}
+              </div>
+              <p v-if="!data.skills?.length">
+                {{ $t("user.profile.skills.empty") }}
+              </p>
             </div>
-            <p v-if="!data.skills?.length">
-              {{ $t("user.profile.skills.empty") }}
-            </p>
+          </div>
+          <div class="items-container">
+            <h1>{{ $t("user.profile.interests.title") }}</h1>
+            <div class="items-wrapper">
+              <div class="interest" v-for="interest in data.interests">
+                {{ interest }}
+              </div>
+              <p v-if="!data.interests?.length">
+                {{ $t("user.profile.interests.empty") }}
+              </p>
+            </div>
           </div>
         </div>
-        <div class="items-container">
-          <h1>{{ $t("user.profile.interests.title") }}</h1>
-          <div class="items-wrapper">
-            <div class="interest" v-for="interest in data.interests">
-              {{ interest }}
-            </div>
-            <p v-if="!data.interests?.length">
-              {{ $t("user.profile.interests.empty") }}
-            </p>
-          </div>
-        </div>
-        <div class="items-container">
-          <h1>{{ $t("user.profile.bio.title") }}</h1>
-          <p>
+        <div class="items-container bg-[#FFB005] min-h-[20vh] p-8 rounded-2xl">
+          <h1 class="text-center">{{ $t("user.profile.bio.title") }}</h1>
+          <p class="text-justify text-xl">
             {{ data.bio?.length > 0 ? data.bio : $t("user.profile.bio.empty") }}
           </p>
         </div>
       </div>
     </div>
-    <div class="divider">
-      <h1>{{ $t("user.profile.introduction.title") }}</h1>
-    </div>
-    <div class="introduction" v-html="render(data.introduction || '')"></div>
-    <div class="divider">
+<!--    <div class="divider">-->
+<!--      <h1>{{ $t("user.profile.introduction.title") }}</h1>-->
+<!--    </div>-->
+    <div class="introduction bg-base-100" v-html="render(data.introduction || '')"></div>
+<!--    <div class="divider">-->
+<!--      <h1>{{ $t("user.profile.accomplishment") }}</h1>-->
+<!--    </div>-->
+    <div class="acc-container">
       <h1>{{ $t("user.profile.accomplishment") }}</h1>
-    </div>
-    <div class="items-wrapper">
-      <div
-        class="card w-96 border bg-base-100"
-        v-for="id in data.accomplishment"
-      >
-        <div class="card-body">
-          <h2 class="text-center text-2xl font-bold">
-            {{ $t(`user.accomplishment[${id - 1}].title`) }}
-          </h2>
-          <p>{{ $t(`user.accomplishment[${id - 1}].description`) }}</p>
+      <div class="items-wrapper">
+        <div
+          class="card w-96 border bg-base-100"
+          v-for="id in data.accomplishment"
+        >
+          <div class="card-body bg-white text-black rounded-2xl">
+            <h2 class="text-center text-2xl font-bold">
+              {{ $t(`user.accomplishment[${id - 1}].title`) }}
+            </h2>
+            <p>{{ $t(`user.accomplishment[${id - 1}].description`) }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -86,17 +91,15 @@ h1 {
 }
 
 .page-container {
-  @apply grid w-full grid-cols-1 md:grid-cols-2;
+  @apply grid w-full grid-cols-1 lg:grid-cols-2 gap-4;
 }
 
 .profile-container {
-  @apply flex flex-col items-center justify-center gap-2;
-  animation: gradient 5s ease-in-out infinite;
-  background-size: 400% 400%;
+  @apply flex flex-col items-center justify-center gap-2 bg-emerald-800 text-white rounded-2xl p-8;
 }
 
 .profile-container .icon {
-  @apply rounded-full;
+  @apply rounded-2xl;
   height: 128px;
   width: 128px;
 }
@@ -106,7 +109,7 @@ h1 {
 }
 
 .profile-container .handle {
-  @apply text-xl text-neutral-400;
+  @apply text-xl text-neutral-300;
 }
 
 .side-info-container {
@@ -118,26 +121,30 @@ h1 {
 }
 
 .side-info-container .items-wrapper {
-  @apply flex flex-row gap-2;
+  @apply flex flex-row gap-2 justify-center;
 }
 
-.side-info-container .items-container p {
-  @apply text-sm;
+.skills-and-interests {
+  @apply flex flex-col gap-4 text-center p-8 bg-blue-800 text-white rounded-2xl;
 }
 
 .skill {
-  @apply rounded-full bg-gradient-to-tr from-blue-900 to-blue-600 px-4 py-2 text-sm text-white;
+  @apply rounded-full px-4 py-2 text-sm bg-indigo-200 text-black font-bold;
 }
 
 .interest {
-  @apply rounded-full bg-gradient-to-tr from-green-900 to-green-600 px-4 py-2 text-sm text-white;
+  @apply rounded-full px-4 py-2 text-sm bg-indigo-200 text-black font-bold;
 }
 
 .introduction {
-  @apply min-h-[50vh] rounded p-4 shadow-xl border border-base-200;
+  @apply min-h-[50vh] rounded-2xl bg-white p-8;
 }
 
 .introduction p {
   @apply text-sm;
+}
+
+.acc-container {
+  @apply flex flex-col gap-4 bg-red-800 p-8 rounded-2xl text-white;
 }
 </style>

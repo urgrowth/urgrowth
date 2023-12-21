@@ -18,7 +18,7 @@ label,
 input,
 button,
 textarea {
-  font-family: "Gabarito", "Anuphan", var(--default-font);
+  font-family: "Noto Sans Thai Looped", var(--default-font);
 }
 
 pre {
@@ -33,6 +33,7 @@ pre {
 .page-layouts {
   margin-left: 12px;
   margin-right: 12px;
+  margin-top: 12px;
   animation: popUpSlideToTopFadeIn 0.75s ease-in-out;
   min-height: 100vh;
 }

@@ -13,7 +13,20 @@ module.exports = {
     extend: {},
   },
   daisyui: {
-    themes: ["corporate"],
-  },
+    themes: [
+      {
+        "living-nature": {
+          "primary": "#344E41",
+          "secondary": "#558055",
+          "accent": "#358065",
+          "neutral": "#5C7D57",
+          "base-100": "#EDEADF",
+          "info": "#266D85",
+          "success": "#397D51",
+          "warning": "#fcbd27",
+          "error": "#702E19",
+        },
+      },
+    ],  },
   plugins: [require("daisyui")],
 };

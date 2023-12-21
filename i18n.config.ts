@@ -11,7 +11,7 @@ export default defineI18nConfig(() => ({
         },
         features: [
           "Advice",
-          "Suggest",
+          "Learning",
           "Plan",
           "Consult",
           "Community",
@@ -38,6 +38,10 @@ export default defineI18nConfig(() => ({
             },
           ],
         },
+        about: {
+          title: "What is URGROWTH?",
+          description: "We are dedicated to encouraging the youths through our website to set out on a journey of self-discovery and self-empowerment. We genuinely think that every person has a distinct identity that is just waiting to be revealed, and we want you to proudly embrace it. Our goal is to assist you in realizing your full potential and utilizing your skills and assets so that you can have a positive influence on society. Our services are intended to lead you down this transforming path and help you become your greatest self, whether you are a student, a young adult, or anybody else that is seeking personal growth and development. Join us in this inspiring endeavor, and let society and yourself benefit from your true identity shining."
+        }
       },
       learning: {
         title: "Learning",
@@ -68,7 +72,8 @@ export default defineI18nConfig(() => ({
         accomplishment: [
           {
             title: "The First Step",
-            description: "The dream begins with you, you are the key to unlock your dream! (Created a URGROWTH profile)",
+            description: "The dream begins with you, you are the key to unlock your dream!",
+            unlock: "Created a URGROWTH profile",
           },
         ],
         update: {
@@ -161,6 +166,10 @@ export default defineI18nConfig(() => ({
             },
           ],
         },
+        about: {
+          title: "ยัวร์โกรว์ธคืออะไร?",
+          description: "เรามุ่งมั่นที่จะกระตุ้นให้กับเยาวชนผ่านเว็บไซต์ของเราเพื่อเริ่มต้นการผจญภัยในการค้นพบตนเองและการเสริมพลังตนเอง ทีมของเราเชื่ออย่างจริงจังว่าทุกคนมีเอกลักษณ์ที่เฉพาะตัวที่กำลังรอให้เปิดเผย และเราต้องการให้คุณยิ่งกว่าที่จะยอมรับมันอย่างภูมิใจ จุดมุ่งหมายของเราคือการช่วยเสริมสร้างความสามารถที่เต็มเปี่ยมของคุณและให้คุณใช้ทักษะและทรัพยากรของคุณอย่างเต็มที่เพื่อที่คุณจะสามารถมีอิทธิพลที่เชิดชูบนสังคม บริการของเราถูกออกแบบมาเพื่อนำคุณไปยังทางที่เปลี่ยนแปลงนี้และช่วยให้คุณกลายเป็นตัวของคุณเองที่ยอดเยี่ยมที่สุด ไม่ว่าคุณจะเป็นนักเรียน ผู้ใหญ่เยาวชนหรือใครก็ตามที่กำลังมองหาการเติบโตและพัฒนาตนเอง ร่วมรับส่วนร่วมในโครงการที่สร้างก๊าซบริสุทธิ์นี้กับเราและให้สังคมและตนเองได้รับประโยชน์จากเอกลักษณ์ที่แท้จริงของคุณที่ส่องแสงอยู่"
+        }
       },
       learning: {
         title: "การเรียนรู้",
@@ -191,7 +200,8 @@ export default defineI18nConfig(() => ({
         accomplishment: [
           {
             title: "ก้าวแรกสู่ความสำเร็จ",
-            description: "ความสำเร็จเริ่มต้นด้วยตัวคุณเอง คุณคือผู้กำหนดอนาคตของคุณ! (สร้างโพรไฟล์)",
+            description: "ความสำเร็จเริ่มต้นด้วยตัวคุณเอง คุณคือผู้กำหนดอนาคตของคุณ!",
+            unlock: "สร้างโพรไฟล์ URGROWTH",
           },
         ],
         update: {

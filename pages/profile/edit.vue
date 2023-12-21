@@ -262,10 +262,6 @@ function closeErrorDialog() {
           {{ $t("user.edit.charLeft") }}</span
         >
       </div>
-      <div class="divider">
-        <h1>{{ $t("user.profile.connections") }}</h1>
-        <!-- Let's just hope we have another backend developer -->
-      </div>
     </div>
   </form>
 </template>

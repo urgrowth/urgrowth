@@ -11,19 +11,18 @@ const avatar = `https://www.gravatar.com/avatar/${md5(
   <nav class="mb-6">
     <div class="navbar-start">
       <label for="my-drawer">
-        <img class="icon" src="/icons/hamburger.png" alt="Menu" />
+        <img class="icon" src="/icons/hamburger.svg" alt="Menu" />
       </label>
     </div>
     <div
       class="logo-container navbar-center cursor-pointer"
       @click="navigateTo('/')"
     >
-      <img src="/images/logo-black.svg" alt="Logo" />
-      <h1>URGROWTH BETA</h1>
+      <img src="/images/beta.png" alt="Logo" />
     </div>
     <div class="navbar-end">
       <a href="/profile">
-        <img class="rounded-full" :src="avatar" alt="Account" v-if="user" />
+        <img class="rounded-2xl" :src="avatar" alt="Account" v-if="user" />
         <img class="icon" src="/icons/user.png" alt="Account" v-else />
       </a>
     </div>
@@ -40,12 +39,9 @@ nav {
 }
 
 .logo-container img {
-  @apply rounded-full;
-  width: 64px;
   height: 64px;
 
   @media screen and (max-width: 768px) {
-    width: 48px;
     height: 48px;
   }
 }

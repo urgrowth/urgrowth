@@ -1,6 +1,7 @@
 <template>
   <LazyNuxtLoadingIndicator color="#f28c18" class="p-1" />
   <div class="page-layouts">
+
     <div class="drawer">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content">
@@ -14,21 +15,19 @@
           class="drawer-overlay"
         ></label>
         <ul
-          class="menu min-h-full w-64 gap-y-4 border-r border-white/25 bg-gradient-to-b from-blue-400/60 to-red-500/20 p-4 font-bold text-white backdrop-blur-xl"
+          class="menu min-h-full w-64 gap-y-4 border-r border-white/25 p-4 font-bold text-white glass"
         >
           <div class="flex w-full items-center justify-between">
             <div class="flex items-center gap-2">
               <img
-                src="/images/logo-white.svg"
+                src="/images/beta.png"
                 alt="Logo"
-                class="ml-1 w-8 p-0"
               />
-              <h1 class="text-base">URGROWTH</h1>
             </div>
             <label for="my-drawer">
               <img
-                class="icon invert hover:invert-0"
-                src="/icons/hamburger.png"
+                class="icon"
+                src="/icons/hamburger.svg"
                 alt="Menu"
               />
             </label>
