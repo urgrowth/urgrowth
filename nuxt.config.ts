@@ -1,12 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import "dotenv/config";
 export default defineNuxtConfig({
-  modules: ["@nuxtjs/i18n", "@nuxtjs/supabase"],
+  modules: ["@nuxtjs/i18n", "@nuxtjs/supabase", "nuxt-primevue"],
   devtools: { enabled: true },
   css: [
     "@/assets/css/fonts.css",
     "@/assets/css/tailwind.css",
     "@/assets/css/global.css",
+    "primevue/resources/themes/lara-light-green/theme.css",
+    "primeicons/primeicons.css"
   ],
   postcss: {
     plugins: {

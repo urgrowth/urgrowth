@@ -5,8 +5,8 @@ export default defineI18nConfig(() => ({
     en: {
       home: {
         banner: {
-          title: "Together we will grow on target",
-          subtitle: "\"Through your ideas\"",
+          title: "Elevate Dreams, Unite Strengths",
+          subtitle: "Growing Together Through Your Ideas",
           button: "Let's use your ideas!",
         },
         features: [
@@ -136,14 +136,14 @@ export default defineI18nConfig(() => ({
         },
       },
       footer: {
-        notice: "© 2023 URGROWTH — All rights reserved",
+        notice: `© ${new Date().getFullYear()} URGROWTH — All rights reserved`,
       },
     },
     th: {
       home: {
         banner: {
-          title: "พวกเราจะเติบโตตามเป้าหมายด้วยกัน",
-          subtitle: "\"ผ่านไอเดียของคุณ\"",
+          title: "ยกระดับความฝัน, รวมความแข็งแกร่ง",
+          subtitle: "เราจะเติบโตด้วยกันผ่านไอเดียของคุณ",
           button: "ไปใช้ไอเดียของคุณกัน!",
         },
         features: ["แนะนำ", "เรียนรู้", "วางแผน", "ปรึกษา", "ชุมชน", "เติบโต"],
@@ -264,7 +264,7 @@ export default defineI18nConfig(() => ({
         },
       },
       footer: {
-        notice: "© 2023 URGROWTH — สงวนลิขสิทธิ์ทุกประการ",
+        notice: `© ${new Date().getFullYear()} URGROWTH — สงวนลิขสิทธิ์ทุกประการ`,
       },
     },
   },
