@@ -11,9 +11,11 @@
             <span class="sub">LET URGROWTH WEIGH UP YOUR IDEAS</span>
           </h1>
         </div>
-        <button class="btn btn-warning w-80" @click="navigateTo('/login')">
-          {{ $t("home.banner.button") }}
-        </button>
+        <NuxtLink to="/profile">
+          <button class="btn btn-warning w-80" @click="navigateTo('/login')">
+            {{ $t("home.banner.button") }}
+          </button>
+        </NuxtLink>
       </div>
       <img
         class="banner1"
@@ -24,11 +26,11 @@
     </div>
 
     <!-- What is URGROWTH -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
-      <div class="img rounded-2xl lg:h-full h-[30vh]"></div>
-      <div class="flex flex-col gap-4">
-        <h1 class="text-5xl font-bold text-accent">{{ $t("home.about.title") }}</h1>
-        <p class="text-lg text-justify">
+    <div class="about-container">
+      <div class="about-image"></div>
+      <div class="about-text-container">
+        <h1>{{ $t("home.about.title") }}</h1>
+        <p>
           {{ $t("home.about.description") }}
         </p>
       </div>
@@ -93,7 +95,7 @@
 
 <style scoped>
 .banner-container {
-  @apply relative flex h-[500px] items-center overflow-hidden p-2 md:p-12 bg-gradient-to-tr from-primary via-accent to-secondary rounded-2xl;
+  @apply relative flex h-[500px] items-center overflow-hidden p-2 md:p-12 bg-primary rounded-box text-center lg:text-left;
 }
 
 .banner-container button {
@@ -102,13 +104,6 @@
 
 .banner1 {
   @apply absolute bottom-0 right-0 mix-blend-multiply;
-}
-
-.img {
-  background-image: url("/images/growth.jpg");
-  background-size: cover;
-  background-position: 100% 20%;
-  background-repeat: no-repeat;
 }
 
 .title-container {
@@ -132,12 +127,36 @@
   @apply ml-2 text-xl text-neutral-300;
 }
 
+.about-container {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-8 w-full;
+}
+
+.about-image {
+  @apply rounded-box lg:h-full h-[30vh];
+  background-image: url("/images/growth.jpg");
+  background-size: cover;
+  background-position: 100% 20%;
+  background-repeat: no-repeat;
+}
+
+.about-text-container {
+  @apply flex flex-col gap-4;
+}
+
+.about-text-container h1 {
+  @apply text-5xl font-bold text-accent text-center lg:text-left;
+}
+
+.about-text-container p {
+  @apply text-lg text-justify;
+}
+
 .features-container {
-  @apply grid w-full grid-cols-2 justify-between gap-12 lg:flex lg:flex-row text-white;
+  @apply grid w-full grid-cols-2 gap-12 lg:flex lg:flex-row text-white;
 }
 
 .features-container .feature {
-  @apply flex flex-col w-full items-center justify-center gap-2 bg-accent rounded-2xl p-8;
+  @apply flex flex-col w-full items-center justify-center gap-2 bg-primary rounded-box p-8;
 }
 
 .features-container .feature .icon {
@@ -184,3 +203,5 @@
   @apply w-64 break-words text-base;
 }
 </style>
+<script setup lang="ts">
+</script>

@@ -18,7 +18,7 @@ label,
 input,
 button,
 textarea {
-  font-family: "Noto Sans Thai Looped", var(--default-font);
+  font-family: "IBM Plex Sans Thai Looped", var(--default-font);
 }
 
 pre {
@@ -34,22 +34,9 @@ pre {
   margin-left: 12px;
   margin-right: 12px;
   margin-top: 12px;
-  animation: popUpSlideToTopFadeIn 0.75s ease-in-out;
   min-height: 100vh;
 }
 
 .page-container {
   @apply flex flex-col gap-16;
-}
-
-@keyframes popUpSlideToTopFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }

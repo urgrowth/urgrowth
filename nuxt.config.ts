@@ -25,6 +25,14 @@ export default defineNuxtConfig({
         },
       ],
     },
+    pageTransition: {
+      name: 'fade',
+      mode: 'out-in'
+    },
+    layoutTransition: {
+      name: 'slide',
+      mode: 'out-in'
+    }
   },
   supabase: {
     url: process.env.SUPABASE_URL,

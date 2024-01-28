@@ -69,10 +69,10 @@ const avatar = `https://www.gravatar.com/avatar/${md5(
       <img src="/images/logo-beta.svg" alt="Logo" />
     </div>
     <div class="navbar-end">
-      <a href="/profile">
+      <NuxtLink to="/profile">
         <img class="rounded-2xl" :src="avatar" alt="Account" v-if="user" />
         <img class="icon" src="/icons/user.png" alt="Account" v-else />
-      </a>
+      </NuxtLink>
     </div>
   </nav>
 </template>
