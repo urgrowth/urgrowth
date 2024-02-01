@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import "dotenv/config";
 export default defineNuxtConfig({
-  modules: ["@nuxtjs/i18n", "@nuxtjs/supabase", "nuxt-primevue"],
+  modules: ["@nuxtjs/i18n", "@nuxtjs/supabase"],
   devtools: { enabled: true },
   css: [
     "@/assets/css/fonts.css",
@@ -24,6 +24,13 @@ export default defineNuxtConfig({
           content: "width=device-width, initial-scale=1, viewport-fit=cover",
         },
       ],
+      link: [
+        {
+          rel: "icon",
+          type: "image/x-icon",
+          href: "/favicon.ico",
+        }
+      ]
     },
     pageTransition: {
       name: 'fade',

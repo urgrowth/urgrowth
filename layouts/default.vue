@@ -1,3 +1,39 @@
+<script setup>
+useHead({
+  title: "URGROWTH - Your Companion to Success",
+  htmlAttrs: {
+    lang: "en",
+  },
+
+  meta: [
+    {
+      property: "og:description",
+      content: "We are dedicated to encouraging the youths through our website to set out on a journey of self-discovery and self-empowerment.",
+      name: "description",
+    },
+    { property: "og:site_name", content: "URGROWTH - Your Companion to Success" },
+    { property: "og:url", content: "https://beta.tinarskii.com" },
+    { property: "og:type", content: "website" },
+    {
+      property: "twitter:card",
+      content: "summary_large_image",
+    },
+    {
+      property: "twitter:site",
+      content: "@WeURGROWTH",
+    },
+    {
+      property: "twitter:description",
+      content: "We are dedicated to encouraging the youths through our website to set out on a journey of self-discovery and self-empowerment.",
+    },
+    {
+      name: "keywords",
+      content: "urgrowth,weurgrowth,growth",
+    },
+  ],
+});
+</script>
+
 <template>
   <LazyNuxtLoadingIndicator color="#f28c18" class="p-1" />
   <div class="page-layouts">

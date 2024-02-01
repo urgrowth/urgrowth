@@ -29,10 +29,9 @@ function changeLanguage() {
       <NuxtLink to="https://github.com/urgrowth/urgrowth">{{
         $t("footer.notice")
       }}</NuxtLink>
-      <a href="/credits.json">(View credits)</a>
     </aside>
     <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-      <NuxtLink to="https://twitter.com/ur_growth"
+      <NuxtLink to="https://twitter.com/WeURGROWTH"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
