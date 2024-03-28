@@ -37,7 +37,6 @@ useHead({
 <template>
   <LazyNuxtLoadingIndicator color="#f28c18" class="p-1" />
   <div class="page-layouts">
-
     <div class="drawer">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content">
@@ -51,45 +50,37 @@ useHead({
           class="drawer-overlay"
         ></label>
         <ul
-          class="menu min-h-full w-64 gap-y-4 border-r border-white/25 p-4 font-bold text-white glass"
+          class="menu min-h-full w-64 gap-y-4 border-r border-white/25 p-4 font-bold text-white bg-black"
         >
-          <div class="flex w-full items-center justify-between">
-            <div class="flex items-center gap-2">
-              <img
-                src="/images/beta.png"
-                alt="Logo"
-              />
-            </div>
-            <label for="my-drawer">
-              <img
-                class="icon"
-                src="/icons/hamburger.svg"
-                alt="Menu"
-              />
-            </label>
-          </div>
+          <center>
+            <img
+              src="/images/logo-white.svg"
+              alt="Logo"
+              width="48"
+            />
+          </center>
           <li>
             <NuxtLink to="/">
               <img src="/icons/home.png" alt="Home" class="w-4" />
-              Home
+              {{ $t("navigation.home") }}
             </NuxtLink>
           </li>
           <li>
             <NuxtLink to="/notifications">
               <img src="/icons/bell.png" alt="Notifications" class="w-4" />
-              Notifications
+              {{ $t("navigation.notifications") }}
             </NuxtLink>
           </li>
           <li>
             <NuxtLink to="/learning" @mouseenter="toggleAccordion('learnings')">
               <img src="/icons/book.png" alt="Learning" class="w-4" />
-              Learnings
-              <img
-                src="/images/caret.png"
-                alt="caret"
-                class="caret w-2"
-                :class="{ open: activeAccordion === 'learnings' }"
-              />
+              {{ $t("navigation.learning") }}
+<!--              <img-->
+<!--                src="/images/caret.png"-->
+<!--                alt="caret"-->
+<!--                class="caret w-2"-->
+<!--                :class="{ open: activeAccordion === 'learnings' }"-->
+<!--              />-->
             </NuxtLink>
           </li>
         </ul>

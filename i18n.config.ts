@@ -138,6 +138,11 @@ export default defineI18nConfig(() => ({
       footer: {
         notice: `© ${new Date().getFullYear()} URGROWTH — All rights reserved`,
       },
+      navigation: {
+        home: "Home",
+        notifications: "Notifications",
+        learning: "Learning"
+      }
     },
     th: {
       home: {
@@ -266,6 +271,11 @@ export default defineI18nConfig(() => ({
       footer: {
         notice: `© ${new Date().getFullYear()} URGROWTH — สงวนลิขสิทธิ์ทุกประการ`,
       },
+      navigation: {
+        home: "หน้าหลัก",
+        notifications: "การแจ้งเตือน",
+        learning: "เรียนรู้"
+      }
     },
   },
 }));

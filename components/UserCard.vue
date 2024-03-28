@@ -145,6 +145,6 @@ h1 {
 }
 
 .acc-container {
-  @apply flex flex-col gap-4 bg-red-800 p-8 rounded-2xl text-white;
+  @apply flex flex-col gap-4 p-8 rounded-2xl;
 }
 </style>
