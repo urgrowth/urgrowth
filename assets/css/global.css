@@ -1,6 +1,6 @@
 :root {
   --default-font: BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 h1,
@@ -18,7 +18,15 @@ label,
 input,
 button,
 textarea {
-  font-family: "IBM Plex Sans Thai Looped", var(--default-font);
+  font-family: "Red Hat Display", "Anuphan", var(--default-font);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+p, span, a, li, label, input, button, textarea {
+  font-weight: 500;
 }
 
 pre {
@@ -31,12 +39,16 @@ pre {
 }
 
 .page-layouts {
-  margin-left: 12px;
-  margin-right: 12px;
-  margin-top: 12px;
+  /*margin-left: 12px;*/
+  /*margin-right: 12px;*/
+  /*margin-top: 12px;*/
   min-height: 100vh;
 }
 
 .page-container {
   @apply flex flex-col gap-16;
+}
+
+.content-container {
+  @apply px-12 flex flex-col gap-16;
 }

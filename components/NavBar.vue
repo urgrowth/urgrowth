@@ -4,49 +4,49 @@ import { ref } from "vue";
 
 const items = ref([
   {
-    label: 'Home',
-    icon: 'pi pi-home'
+    label: "Home",
+    icon: "pi pi-home",
   },
   {
-    label: 'Features',
-    icon: 'pi pi-star'
+    label: "Features",
+    icon: "pi pi-star",
   },
   {
-    label: 'Projects',
-    icon: 'pi pi-search',
+    label: "Projects",
+    icon: "pi pi-search",
     items: [
       {
-        label: 'Components',
-        icon: 'pi pi-bolt'
+        label: "Components",
+        icon: "pi pi-bolt",
       },
       {
-        label: 'Blocks',
-        icon: 'pi pi-server'
+        label: "Blocks",
+        icon: "pi pi-server",
       },
       {
-        label: 'UI Kit',
-        icon: 'pi pi-pencil'
+        label: "UI Kit",
+        icon: "pi pi-pencil",
       },
       {
-        label: 'Templates',
-        icon: 'pi pi-palette',
+        label: "Templates",
+        icon: "pi pi-palette",
         items: [
           {
-            label: 'Apollo',
-            icon: 'pi pi-palette'
+            label: "Apollo",
+            icon: "pi pi-palette",
           },
           {
-            label: 'Ultima',
-            icon: 'pi pi-palette'
-          }
-        ]
-      }
-    ]
+            label: "Ultima",
+            icon: "pi pi-palette",
+          },
+        ],
+      },
+    ],
   },
   {
-    label: 'Contact',
-    icon: 'pi pi-envelope'
-  }
+    label: "Contact",
+    icon: "pi pi-envelope",
+  },
 ]);
 const user = useSupabaseUser();
 
@@ -56,23 +56,29 @@ const avatar = `https://www.gravatar.com/avatar/${md5(
 </script>
 
 <template>
-  <nav class="mb-6">
-    <div class="navbar-start">
-      <label for="my-drawer">
-        <img class="icon" src="/icons/hamburger.svg" alt="Menu" />
-      </label>
-    </div>
-    <div
-      class="logo-container navbar-center cursor-pointer"
-      @click="navigateTo('/')"
-    >
-      <img src="/images/logo-beta.svg" alt="Logo" />
-    </div>
-    <div class="navbar-end">
-      <NuxtLink to="/profile">
-        <img class="rounded-2xl" :src="avatar" alt="Account" v-if="user" />
-        <img class="icon" src="/icons/user.png" alt="Account" v-else />
-      </NuxtLink>
+  <nav class="navbar-container">
+    <div class="navbar-items">
+      <div class="flex gap-4 items-center">
+        <div
+          class="logo-container navbar-center cursor-pointer"
+          @click="navigateTo('/')"
+        >
+          <img src="/images/logo-beta.svg" alt="Logo" width="200px" />
+        </div>
+        <label for="my-drawer">
+          <div class="hamburger">
+            <span class="line-1"></span>
+            <span class="line-2"></span>
+            <span class="line-3"></span>
+          </div>
+        </label>
+      </div>
+      <div>
+        <NuxtLink to="/profile">
+          <img class="rounded-box" :src="avatar" alt="Account" v-if="user" />
+          <img class="icon" src="/icons/user.png" alt="Account" v-else />
+        </NuxtLink>
+      </div>
     </div>
   </nav>
 </template>
@@ -82,8 +88,16 @@ nav {
   @apply navbar bg-blend-normal;
 }
 
+.navbar-container {
+  @apply z-[2] bg-base-100;
+}
+
+.navbar-items {
+  @apply flex flex-row justify-between w-full md:px-12 px-6 py-2;
+}
+
 .logo-container {
-  @apply navbar-center flex justify-center;
+  @apply navbar-center justify-center hidden md:flex;
 }
 
 .logo-container img {
@@ -96,5 +110,20 @@ nav {
 
 .logo-container h1 {
   @apply text-xl font-bold md:text-2xl;
+}
+
+.hamburger {
+  @apply cursor-pointer flex flex-col justify-center items-center gap-1;
+}
+
+.line-1, .line-2, .line-3 {
+  cursor: pointer;
+  height: 3px;
+  width: 24px;
+  background: #000;
+  position: relative;
+  display: block;
+  content: '';
+  transition: all 0.3s;
 }
 </style>

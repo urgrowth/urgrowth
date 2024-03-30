@@ -7,8 +7,6 @@ export default defineNuxtConfig({
     "@/assets/css/fonts.css",
     "@/assets/css/tailwind.css",
     "@/assets/css/global.css",
-    "primevue/resources/themes/lara-light-green/theme.css",
-    "primeicons/primeicons.css"
   ],
   postcss: {
     plugins: {

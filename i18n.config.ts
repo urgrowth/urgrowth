@@ -141,7 +141,8 @@ export default defineI18nConfig(() => ({
       navigation: {
         home: "Home",
         notifications: "Notifications",
-        learning: "Learning"
+        learning: "Learning",
+        explore: "Explore",
       }
     },
     th: {
@@ -274,7 +275,8 @@ export default defineI18nConfig(() => ({
       navigation: {
         home: "หน้าหลัก",
         notifications: "การแจ้งเตือน",
-        learning: "เรียนรู้"
+        learning: "เรียนรู้",
+        explore: "สำรวจ",
       }
     },
   },

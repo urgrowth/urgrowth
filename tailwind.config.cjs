@@ -25,6 +25,9 @@ module.exports = {
           "success": "#219d2b",
           "warning": "#fcbd27",
           "error": "#c01d1d",
+          "--rounded-box": ".25rem",
+          "--rounded-btn": ".25rem",
+          "--rounded-badge": "1.9rem",
         },
       },
       {
